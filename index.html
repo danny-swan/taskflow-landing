@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TaskFlow — удобный менеджер задач для Windows</title>
+<meta name="description" content="TaskFlow — настольный менеджер задач для Windows. Канбан, календарь, дашборд, гибкие статусы. Настраивается под ваш рабочий процесс.">
+<meta name="theme-color" content="#FBFAF6">
+<meta name="color-scheme" content="light">
+
+<meta property="og:title" content="TaskFlow — удобный менеджер задач для Windows">
+<meta property="og:description" content="Настольный менеджер задач: канбан, календарь, дашборд, гибкие статусы. Работает без интернета.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="screenshot.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  /* Светлая тема — тёпло-кремовая, светлее и мягче */
+  --bg: #FBFAF6;
+  --surface: #FFFFFF;
+  --surface-alt: #F5F3EC;
+  --border: #E4E1D8;
+  --text: #2A2721;
+  --text-muted: #6E6C67;
+  --text-faint: #B3B1AC;
+  --primary: #0F7A80;
+  --primary-hover: #0A5C61;
+  --on-primary: #FFFFFF;
+  --accent-soft: rgba(15, 122, 128, 0.08);
+  --shadow-sm: 0 1px 3px rgba(40, 37, 29, 0.04);
+  --shadow-md: 0 12px 40px -14px rgba(40, 37, 29, 0.16);
+  --radius: 14px;
+}
+/* Тёмная тема отключена по умолчанию — превью в перплексити принудительно тёмное,
+   а нам нужен светлый лендинг. При желании можно вернуть через prefers-color-scheme. */
+
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  font-feature-settings: 'ss01', 'cv11';
+}
+img { max-width: 100%; display: block; }
+a { color: var(--primary); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: var(--primary-hover); }
+
+h1, h2, h3 {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--text);
+}
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* --- Nav --- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.nav.scrolled { border-bottom-color: var(--border); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; font-size: 19px; letter-spacing: -0.01em;
+  color: var(--text);
+}
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--primary); color: var(--on-primary);
+  display: grid; place-items: center;
+  font-weight: 800;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a { color: var(--text-muted); font-size: 15px; font-weight: 500; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  padding: 9px 16px; border-radius: 10px;
+  background: var(--primary); color: var(--on-primary) !important;
+  font-weight: 600; font-size: 14px;
+  transition: background 0.15s ease;
+}
+.nav-cta:hover { background: var(--primary-hover); color: var(--on-primary) !important; }
+
+@media (max-width: 640px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* --- Hero --- */
+.hero {
+  padding: 96px 0 56px;
+  text-align: center;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  background: var(--accent-soft);
+  color: var(--primary);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 24px;
+}
+.eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5.5vw, 62px);
+  max-width: 18ch;
+  margin: 0 auto 24px;
+}
+.hero .accent { color: var(--primary); }
+.hero-sub {
+  font-size: clamp(17px, 1.9vw, 20px);
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.55;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; justify-content: center;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600; font-size: 15px;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--primary); color: var(--on-primary);
+}
+.btn-primary:hover {
+  background: var(--primary-hover); color: var(--on-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.hero-meta {
+  margin-top: 28px;
+  display: flex; gap: 24px; justify-content: center; align-items: center;
+  color: var(--text-faint);
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* --- Screenshot --- */
+.screenshot-wrap {
+  padding: 24px 0 96px;
+}
+.screenshot {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 30px 60px -20px rgba(40, 37, 29, 0.14),
+    0 18px 36px -18px rgba(40, 37, 29, 0.08);
+}
+
+.screenshot-chrome {
+  height: 32px;
+  background: linear-gradient(to bottom, var(--surface-alt), var(--surface));
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.screenshot-dots {
+  position: absolute;
+  top: 12px; left: 16px;
+  display: flex; gap: 6px;
+}
+.screenshot-dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--text-faint);
+  opacity: 0.5;
+}
+.screenshot img {
+  display: block; width: 100%; height: auto;
+}
+
+/* --- Features --- */
+.features {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+}
+.section-head {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-head h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  max-width: 22ch;
+  margin: 0 auto 16px;
+}
+.section-head p {
+  color: var(--text-muted);
+  max-width: 56ch;
+  margin: 0 auto;
+  font-size: 17px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+.feature {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.feature:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  transform: translateY(-2px);
+}
+.feature-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--primary);
+  display: grid; place-items: center;
+  margin-bottom: 20px;
+}
+.feature-icon svg { width: 22px; height: 22px; }
+.feature h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.feature p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- How it works --- */
+.how {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (max-width: 800px) {
+  .steps { grid-template-columns: 1fr; }
+}
+.step { position: relative; }
+.step-num {
+  font-family: 'Manrope', sans-serif;
+  font-size: 40px; font-weight: 800;
+  color: var(--primary);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 14px;
+  letter-spacing: -0.03em;
+}
+.step h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+.step p {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* --- Tech --- */
+.tech {
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.tech-list {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px; margin-top: 32px;
+}
+.tech-chip {
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  color: var(--text-muted);
+  font-family: 'Manrope', sans-serif;
+}
+
+/* --- CTA --- */
+.cta {
+  padding: 96px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.cta h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  margin-bottom: 20px;
+  max-width: 20ch;
+  margin-left: auto; margin-right: auto;
+}
+.cta p {
+  color: var(--text-muted);
+  font-size: 18px;
+  margin: 0 auto 32px;
+  max-width: 52ch;
+}
+
+/* --- Footer --- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  color: var(--text-faint);
+  font-size: 14px;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: var(--text-muted); }
+.footer-links a:hover { color: var(--text); }
+
+/* --- Fade-in --- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">✓</span>
+      TaskFlow
+    </a>
+    <div class="nav-links">
+      <a href="#features">Возможности</a>
+      <a href="#how">Как начать</a>
+      <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.22_x64-setup.exe" class="nav-cta download-latest" data-asset-pattern="x64-setup.exe">Скачать</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero container">
+  <div class="eyebrow">
+    <span class="eyebrow-dot"></span>
+    v0.9.22 — стабильный релиз
+  </div>
+  <h1><span class="accent">TaskFlow</span> — удобный менеджер задач для Windows</h1>
+  <p class="hero-sub">
+    Настольное приложение, которое подстраивается под ваш рабочий процесс. Канбан, календарь, дашборд, гибкие статусы — всё, что нужно, чтобы держать дела под контролем.
+  </p>
+  <div class="hero-cta">
+    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.22_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Скачать для Windows
+    </a>
+    <a href="https://github.com/danny-swan/taskflow-app" class="btn btn-ghost" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.34-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.19 1.18a11 11 0 0 1 5.8 0c2.22-1.5 3.19-1.18 3.19-1.18.62 1.6.23 2.77.11 3.06.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15v3.19c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      Открыть на GitHub
+    </a>
+  </div>
+  <div class="hero-meta">
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Открытый исходный код
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Windows 10 / 11
+    </span>
+    <span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Автообновления
+    </span>
+  </div>
+</header>
+
+<section class="screenshot-wrap container reveal">
+  <div class="screenshot">
+    <div class="screenshot-chrome"><div class="screenshot-dots"><span></span><span></span><span></span></div></div>
+    <img src="screenshot.png" alt="Интерфейс TaskFlow: список задач, категории, боковое меню" width="1080" height="675" loading="eager">
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Удобный рабочий инструмент. Настраивается под вас.</h2>
+      <p>TaskFlow не пытается заменить Notion или Jira. Он собирает главное — простой и понятный интерфейс, которым удобно пользоваться каждый день.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Канбан и список</h3>
+        <p>Переключайтесь между списком и канбан-доской. Drag &amp; drop между колонками. Пять статусов по умолчанию — «Важно», «Сегодня», «В процессе», «Взять в работу», «Выполнено» — и возможность настроить свои под ваши процессы.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>Календарь и дедлайны</h3>
+        <p>Просроченные и сегодняшние задачи подсвечиваются автоматически. Смотрите загрузку по месяцам, назначайте дедлайны, группируйте по категориям — всё сразу видно, ничего не теряется.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 12l4-4 4 4 6-6"/></svg>
+        </div>
+        <h3>Дашборд и статистика</h3>
+        <p>Сколько задач сделали за неделю, где буксуете, какая категория съедает больше времени. Данные — чтобы принимать решения, а не для красоты.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Русский и английский</h3>
+        <p>Полная локализация интерфейса. Переключение языка прямо в приложении — без перезапуска. Одинаково удобно на русском и английском, без потерь в терминах.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Категории и приоритеты</h3>
+        <p>Свои цветовые категории для проектов, приоритетов и контекстов. Быстрые фильтры в один клик — покажет только то, что важно прямо сейчас.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        </div>
+        <h3>Экспорт и импорт JSON</h3>
+        <p>Ваши данные — ваши. Экспортируйте всё в JSON одним кликом, импортируйте на другом устройстве. Никакого lock-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Три шага до первой задачи</h2>
+      <p>Скачали, зарегистрировались, начали работать. Никаких сложных настроек — всё готово из коробки.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Скачайте .exe</h3>
+        <p>Portable-версия или NSIS-инсталлятор для Windows — без прав администратора. MSI-инсталлятор — если нужен стандартный вариант установки.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Создайте аккаунт</h3>
+        <p>Регистрация по email или через Google — займёт минуту. Аккаунт нужен для безопасности данных и будущих возможностей.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Настройте под себя</h3>
+        <p>Добавьте задачи, категории, приоритеты. При желании — свои статусы. Через пять минут интерфейс будет уже как родной.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tech">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Технологии, которым можно доверять</h2>
+      <p>Открытый стек. Автообновления. Тесты на каждый релиз.</p>
+    </div>
+    <div class="tech-list reveal">
+      <span class="tech-chip">Tauri</span>
+      <span class="tech-chip">React 19</span>
+      <span class="tech-chip">TypeScript</span>
+      <span class="tech-chip">Supabase</span>
+      <span class="tech-chip">Playwright E2E</span>
+      <span class="tech-chip">Vitest</span>
+      <span class="tech-chip">GitHub Actions</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Начните доводить дела до конца сегодня</h2>
+    <p>Скачивайте и используйте TaskFlow, чтобы работать спокойно, комфортно и с ясной головой — задачи под рукой, приоритеты на месте, ничего не забыто.</p>
+    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.22_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span id="cta-download-label">Скачать TaskFlow v0.9.22</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© 2026 TaskFlow · MIT License</div>
+    <div class="footer-links">
+      <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/danny-swan/taskflow-app/releases" target="_blank" rel="noopener">Релизы</a>
+      <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">Issues</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav shadow on scroll
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  nav.classList.toggle('scrolled', window.scrollY > 8);
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Обновляем все кнопки скачивания под актуальный релиз через GitHub API.
+// URL в href уже валидный (ведёт на v0.9.22), если JS упадёт — скачается оно.
+(async () => {
+  try {
+    const r = await fetch('https://api.github.com/repos/danny-swan/taskflow-app/releases/latest', {
+      headers: { 'Accept': 'application/vnd.github+json' }
+    });
+    if (!r.ok) return;
+    const rel = await r.json();
+    const asset = (rel.assets || []).find(a => /x64-setup\.exe$/i.test(a.name));
+    if (!asset) return;
+    const url = asset.browser_download_url;
+    document.querySelectorAll('.download-latest').forEach(a => {
+      a.href = url;
+      a.setAttribute('download', asset.name);
+    });
+    const label = document.getElementById('cta-download-label');
+    if (label && rel.tag_name) label.textContent = 'Скачать TaskFlow ' + rel.tag_name;
+  } catch (_) {}
+})();
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  }
+}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
