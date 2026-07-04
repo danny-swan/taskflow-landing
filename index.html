@@ -399,14 +399,14 @@ h1, h2, h3 {
 <header class="hero container">
   <div class="eyebrow">
     <span class="eyebrow-dot"></span>
-    v0.9.22 — стабильный релиз
+    <span id="hero-version">v0.9.26 — стабильный релиз</span>
   </div>
   <h1><span class="accent">TaskFlow</span> — удобный менеджер задач для Windows</h1>
   <p class="hero-sub">
     Настольное приложение, которое подстраивается под ваш рабочий процесс. Канбан, календарь, дашборд, гибкие статусы — всё, что нужно, чтобы держать дела под контролем.
   </p>
   <div class="hero-cta">
-    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.22_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
+    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.26_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Скачать для Windows
     </a>
@@ -539,9 +539,9 @@ h1, h2, h3 {
   <div class="container">
     <h2>Начните доводить дела до конца сегодня</h2>
     <p>Скачивайте и используйте TaskFlow, чтобы работать спокойно, комфортно и с ясной головой — задачи под рукой, приоритеты на месте, ничего не забыто.</p>
-    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.22_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
+    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.26_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span id="cta-download-label">Скачать TaskFlow v0.9.22</span>
+      <span id="cta-download-label">Скачать TaskFlow v0.9.26</span>
     </a>
   </div>
 </section>
@@ -567,8 +567,8 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Обновляем все кнопки скачивания под актуальный релиз через GitHub API.
-// URL в href уже валидный (ведёт на v0.9.22), если JS упадёт — скачается оно.
+// Обновляем версионный баннер и кнопки скачивания через GitHub API.
+// URL в href и hardcoded-метки ведут на текущий базовый релиз — fallback на случай, если JS отвалится.
 (async () => {
   try {
     const r = await fetch('https://api.github.com/repos/danny-swan/taskflow-app/releases/latest', {
@@ -583,8 +583,12 @@ onScroll();
       a.href = url;
       a.setAttribute('download', asset.name);
     });
-    const label = document.getElementById('cta-download-label');
-    if (label && rel.tag_name) label.textContent = 'Скачать TaskFlow ' + rel.tag_name;
+    if (rel.tag_name) {
+      const label = document.getElementById('cta-download-label');
+      if (label) label.textContent = 'Скачать TaskFlow ' + rel.tag_name;
+      const hero = document.getElementById('hero-version');
+      if (hero) hero.textContent = rel.tag_name + ' — стабильный релиз';
+    }
   } catch (_) {}
 })();
 
