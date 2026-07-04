@@ -366,9 +366,11 @@ h1, h2, h3 {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 16px;
 }
-.footer-links { display: flex; gap: 24px; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-links a { color: var(--text-muted); }
 .footer-links a:hover { color: var(--text); }
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--text); }
 
 /* --- Fade-in --- */
 @media (prefers-reduced-motion: no-preference) {
@@ -546,8 +548,9 @@ h1, h2, h3 {
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div>© 2026 TaskFlow · MIT License</div>
+    <div>© 2026 TaskFlow · <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a></div>
     <div class="footer-links">
+      <a href="/privacy.html">Политика конфиденциальности</a>
       <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
       <a href="https://github.com/danny-swan/taskflow-app/releases" target="_blank" rel="noopener">Релизы</a>
       <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">Issues</a>

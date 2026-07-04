@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Политика конфиденциальности — TaskFlow</title>
+<meta name="description" content="Политика конфиденциальности TaskFlow — какие данные мы собираем, как храним и защищаем, ваши права." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #FBFAF6;
+  --surface: #FFFFFF;
+  --border: #E8E4DA;
+  --text: #1A1815;
+  --text-muted: #625E56;
+  --text-faint: #8F8B82;
+  --accent: #01696F;
+  --accent-hover: #024F54;
+  --warn-bg: #FEF3C7;
+  --warn-border: #FDE68A;
+  --warn-text: #78350F;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- Nav --- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251, 250, 246, 0.85);
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.nav.scrolled { border-bottom-color: var(--border); }
+.nav-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 0;
+}
+.nav-brand {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.nav-brand:hover { color: var(--accent); }
+
+/* --- Main --- */
+main { padding: 48px 0 80px; }
+
+h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px 0;
+  color: var(--text);
+}
+.effective-date {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 0 0 40px 0;
+}
+
+h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 48px 0 16px 0;
+  color: var(--text);
+}
+h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 28px 0 12px 0;
+  color: var(--text);
+}
+p { margin: 0 0 16px 0; color: var(--text); }
+ul, ol { margin: 0 0 16px 0; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+strong { font-weight: 600; color: var(--text); }
+
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { color: var(--accent-hover); }
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 64px 0 48px 0;
+}
+
+.lang-switch {
+  display: inline-flex; gap: 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.lang-switch a { color: var(--text-muted); }
+.lang-switch .active { color: var(--text); font-weight: 600; text-decoration: none; }
+
+/* --- Footer --- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  color: var(--text-faint);
+  font-size: 14px;
+  margin-top: 40px;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer a { color: var(--text-muted); text-decoration: none; }
+.footer a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  h1 { font-size: 32px; }
+  h2 { font-size: 20px; margin-top: 40px; }
+  main { padding: 32px 0 60px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-brand">TaskFlow</a>
+    <div class="lang-switch">
+      <a href="#ru" class="active">RU</a>
+      <a href="#en">EN</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- RUSSIAN -->
+    <section id="ru">
+      <h1>Политика конфиденциальности TaskFlow</h1>
+      <p class="effective-date">Дата вступления в силу: 3 июля 2026</p>
+
+      <h2>Кто мы</h2>
+      <p>TaskFlow — это персональный менеджер задач с открытым исходным кодом, разрабатываемый Даниилом Лебедевым (danny-swan). Приложение распространяется под лицензией <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a>.</p>
+      <p>Связь: <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">github.com/danny-swan/taskflow-app/issues</a> — здесь можно задать вопрос, сообщить о баге или запросить свои данные. Отдельный контактный email появится позже.</p>
+
+      <h2>Какие данные мы собираем</h2>
+
+      <h3>Данные аккаунта (обязательные для регистрации)</h3>
+      <ul>
+        <li><strong>Email</strong> — используется для входа и восстановления пароля</li>
+        <li><strong>Хеш пароля</strong> — при регистрации через email/password. <strong>Важно:</strong> сам пароль нигде не хранится — ни у нас, ни в Supabase. Хеш — это односторонняя криптографическая свёртка (bcrypt), из которой невозможно восстановить исходный пароль. Даже разработчик не может узнать ваш пароль. При входе Supabase хеширует введённый пароль тем же алгоритмом и сравнивает с сохранённым хешем.</li>
+        <li><strong>Дата регистрации, дата последнего входа</strong> — генерируются автоматически</li>
+      </ul>
+
+      <h3>Телеметрия (сбор при использовании приложения)</h3>
+      <ul>
+        <li><strong>Тип события:</strong> регистрация, вход/выход, старт приложения, создание/удаление/выполнение задачи (без содержимого задач)</li>
+        <li><strong>Версия приложения</strong> (например, 0.9.10)</li>
+        <li><strong>Операционная система</strong> и её версия (например, Windows 10.0.19045)</li>
+        <li><strong>Время события</strong></li>
+      </ul>
+
+      <h3>Что мы НЕ собираем</h3>
+      <ul>
+        <li><strong>Содержимое задач</strong> — названия, описания, теги, дедлайны хранятся ТОЛЬКО локально в SQLite на вашем устройстве и никогда не отправляются на наши серверы</li>
+        <li><strong>Пароли в открытом виде</strong> — только необратимые bcrypt-хеши</li>
+        <li>IP-адрес не сохраняется дольше стандартных серверных логов (30 дней у Supabase)</li>
+        <li>Никакой рекламной или маркетинговой аналитики</li>
+        <li>Никакой передачи данных третьим лицам для коммерческих целей</li>
+      </ul>
+
+      <h2>Где хранятся данные</h2>
+      <ul>
+        <li><strong>Локальные данные (задачи, теги, настройки):</strong> SQLite-файл на вашем устройстве. Полностью под вашим контролем.</li>
+        <li><strong>Данные аккаунта и телеметрия:</strong> Supabase (Postgres), регион Frankfurt (EU). Supabase Inc. — субпроцессор, соблюдающий GDPR.</li>
+      </ul>
+
+      <h2>Ваши права</h2>
+      <p>Вы имеете право:</p>
+      <ol>
+        <li><strong>Получить копию своих данных</strong> — откройте issue в <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">github.com/danny-swan/taskflow-app/issues</a> с меткой <code>data-request</code>, отправим JSON-выгрузку в течение 30 дней</li>
+        <li><strong>Удалить аккаунт</strong> — Настройки → Аккаунт → «Удалить аккаунт». Все данные аккаунта и телеметрия удаляются немедленно. Локальные задачи остаются на вашем устройстве и удаляются отдельно (удалением файла БД).</li>
+        <li><strong>Отозвать согласие</strong> — удаление аккаунта эквивалентно отзыву согласия</li>
+        <li><strong>Пожаловаться в надзорный орган</strong> — если считаете, что мы нарушаем законодательство</li>
+      </ol>
+
+      <h2>Зачем нам эти данные</h2>
+      <ul>
+        <li><strong>Аутентификация</strong> — иначе невозможно связать сессии одного и того же пользователя</li>
+        <li><strong>Понимание аудитории</strong> — сколько людей пользуется приложением, какие версии актуальны, на каких OS работает; это помогает решать, какие функции разрабатывать и какие версии поддерживать</li>
+        <li><strong>Отладка</strong> — при жалобе на баг мы можем посмотреть, какие версии затронуты</li>
+      </ul>
+
+      <h2>Сколько данные хранятся</h2>
+      <ul>
+        <li>Пока у вас есть аккаунт — бессрочно</li>
+        <li>После удаления аккаунта — все данные удаляются немедленно, серверные логи через 30 дней</li>
+      </ul>
+
+      <h2>Изменения политики</h2>
+      <p>При существенных изменениях мы уведомим внутри приложения при следующем входе.</p>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ENGLISH -->
+    <section id="en">
+      <h1>Privacy Policy for TaskFlow</h1>
+      <p class="effective-date">Effective date: July 3, 2026</p>
+
+      <h2>Who we are</h2>
+      <p>TaskFlow is an open-source personal task manager developed by Daniil Lebedev (danny-swan). The app is distributed under the <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a> license.</p>
+      <p>Contact: <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">github.com/danny-swan/taskflow-app/issues</a> — ask questions, report bugs, or request your data here. A dedicated contact email will be added later.</p>
+
+      <h2>What data we collect</h2>
+
+      <h3>Account data (required for registration)</h3>
+      <ul>
+        <li><strong>Email</strong> — used for login and password recovery</li>
+        <li><strong>Password hash</strong> — for email/password registration. <strong>Important:</strong> the raw password is never stored — not by us, not by Supabase. A hash is a one-way cryptographic digest (bcrypt) from which the original password cannot be recovered. Not even the developer can see your password. On login, Supabase hashes the entered password with the same algorithm and compares it to the stored hash.</li>
+        <li><strong>Registration and last login dates</strong> — generated automatically</li>
+      </ul>
+
+      <h3>Telemetry (collected during app usage)</h3>
+      <ul>
+        <li><strong>Event type:</strong> signup, login/logout, app start, task created/deleted/completed (without task content)</li>
+        <li><strong>App version</strong> (e.g., 0.9.10)</li>
+        <li><strong>Operating system</strong> and its version (e.g., Windows 10.0.19045)</li>
+        <li><strong>Event timestamp</strong></li>
+      </ul>
+
+      <h3>What we do NOT collect</h3>
+      <ul>
+        <li><strong>Task content</strong> — titles, descriptions, tags, deadlines are stored ONLY locally in SQLite on your device and never leave it</li>
+        <li><strong>Passwords in plain text</strong> — only irreversible bcrypt hashes</li>
+        <li>IP addresses are not retained beyond standard server logs (30 days at Supabase)</li>
+        <li>No advertising or marketing analytics</li>
+        <li>No transfer of data to third parties for commercial purposes</li>
+      </ul>
+
+      <h2>Where data is stored</h2>
+      <ul>
+        <li><strong>Local data (tasks, tags, settings):</strong> SQLite file on your device. Fully under your control.</li>
+        <li><strong>Account data and telemetry:</strong> Supabase (Postgres), Frankfurt (EU) region. Supabase Inc. is a GDPR-compliant subprocessor.</li>
+      </ul>
+
+      <h2>Your rights</h2>
+      <p>You have the right to:</p>
+      <ol>
+        <li><strong>Get a copy of your data</strong> — open an issue at <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">github.com/danny-swan/taskflow-app/issues</a> with the <code>data-request</code> label, we'll send a JSON export within 30 days</li>
+        <li><strong>Delete your account</strong> — Settings → Account → «Delete account». All account data and telemetry are deleted immediately. Local tasks remain on your device and can be deleted separately by removing the database file.</li>
+        <li><strong>Withdraw consent</strong> — account deletion is equivalent to consent withdrawal</li>
+        <li><strong>File a complaint</strong> with a supervisory authority if you believe we violate applicable law</li>
+      </ol>
+
+      <h2>Why we need this data</h2>
+      <ul>
+        <li><strong>Authentication</strong> — without it we cannot link sessions of the same user</li>
+        <li><strong>Understanding the audience</strong> — how many people use the app, which versions are current, which OSes; helps decide what features to build and which versions to support</li>
+        <li><strong>Debugging</strong> — when a bug is reported we can check which versions are affected</li>
+      </ul>
+
+      <h2>How long we retain data</h2>
+      <ul>
+        <li>As long as you have an account — indefinitely</li>
+        <li>After account deletion — all data is deleted immediately, server logs after 30 days</li>
+      </ul>
+
+      <h2>Policy changes</h2>
+      <p>We'll notify you in-app at the next login for material changes.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© 2026 TaskFlow · <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a></div>
+    <div class="footer-links">
+      <a href="/">На главную</a>
+      <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav shadow on scroll
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  if (window.scrollY > 8) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Lang switch active state
+const langLinks = document.querySelectorAll('.lang-switch a');
+const setActive = (hash) => {
+  langLinks.forEach(a => {
+    if (a.getAttribute('href') === hash) a.classList.add('active');
+    else a.classList.remove('active');
+  });
+};
+langLinks.forEach(a => a.addEventListener('click', (e) => setActive(a.getAttribute('href'))));
+if (window.location.hash === '#en') setActive('#en');
+</script>
+
+</body>
+</html>
