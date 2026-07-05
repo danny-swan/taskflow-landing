@@ -355,6 +355,160 @@ h1, h2, h3 {
   max-width: 52ch;
 }
 
+/* --- Support --- */
+.support {
+  padding: 96px 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+.support-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 44px;
+}
+.support-head h2 {
+  font-size: clamp(28px, 3.5vw, 40px);
+  margin-bottom: 16px;
+}
+.support-head p {
+  color: var(--text-muted);
+  font-size: 17px;
+  margin: 0 0 12px;
+  line-height: 1.65;
+}
+.support-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.support-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+.support-card .support-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+}
+.support-card .support-title .support-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.support-card .support-network {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: -6px;
+  letter-spacing: 0.01em;
+}
+.support-card .support-qr {
+  align-self: center;
+  background: #FFFFFF;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  width: 148px;
+  height: 148px;
+  display: grid;
+  place-items: center;
+}
+.support-card .support-qr img,
+.support-card .support-qr svg {
+  width: 128px;
+  height: 128px;
+  display: block;
+}
+.support-card .support-address {
+  font-family: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 11.5px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  word-break: break-all;
+  color: var(--text);
+  user-select: all;
+  line-height: 1.4;
+}
+.support-card .support-copy {
+  align-self: flex-start;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.support-card .support-copy:hover {
+  background: var(--accent-soft);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.support-card .support-copy.copied {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+.support-card.support-cloudtips {
+  align-items: flex-start;
+}
+.support-card.support-cloudtips .support-cta {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.15s ease;
+}
+.support-card.support-cloudtips .support-cta:hover {
+  background: var(--primary-hover);
+}
+.support-card.support-cloudtips .support-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.support-disclaimer {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid #B4562B;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.support-disclaimer strong {
+  color: var(--text);
+  font-weight: 700;
+}
+@media (max-width: 640px) {
+  .support-methods { grid-template-columns: 1fr; }
+  .support { padding: 72px 0; }
+}
+
 /* --- Footer --- */
 .footer {
   border-top: 1px solid var(--border);
@@ -390,8 +544,9 @@ h1, h2, h3 {
     <div class="nav-links">
       <a href="#features">Возможности</a>
       <a href="#how">Как начать</a>
+      <a href="#support">Поддержать</a>
       <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.22_x64-setup.exe" class="nav-cta download-latest" data-asset-pattern="x64-setup.exe">Скачать</a>
+      <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="nav-cta download-latest" data-asset-pattern="x64-setup.exe">Скачать</a>
     </div>
   </div>
 </nav>
@@ -399,14 +554,14 @@ h1, h2, h3 {
 <header class="hero container">
   <div class="eyebrow">
     <span class="eyebrow-dot"></span>
-    <span id="hero-version">v0.9.29 — стабильный релиз</span>
+    <span id="hero-version">v0.9.31 — стабильный релиз</span>
   </div>
   <h1><span class="accent">TaskFlow</span> — удобный менеджер задач для Windows</h1>
   <p class="hero-sub">
     Настольное приложение, которое подстраивается под ваш рабочий процесс. Канбан, календарь, дашборд, гибкие статусы — всё, что нужно, чтобы держать дела под контролем.
   </p>
   <div class="hero-cta">
-    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.26_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
+    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Скачать для Windows
     </a>
@@ -539,10 +694,80 @@ h1, h2, h3 {
   <div class="container">
     <h2>Начните доводить дела до конца сегодня</h2>
     <p>Скачивайте и используйте TaskFlow, чтобы работать спокойно, комфортно и с ясной головой — задачи под рукой, приоритеты на месте, ничего не забыто.</p>
-    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.26_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
+    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span id="cta-download-label">Скачать TaskFlow v0.9.29</span>
+      <span id="cta-download-label">Скачать TaskFlow v0.9.31</span>
     </a>
+  </div>
+</section>
+
+<section class="support" id="support">
+  <div class="container">
+    <div class="support-head reveal">
+      <h2>Поддержать проект</h2>
+      <p>TaskFlow я делаю один и в свободное время — без рекламы и без сбора данных. Если приложение и его функционал вам понравились, и вы хотите, чтобы оно продолжало развиваться, — буду благодарен, если поддержите меня напрямую.</p>
+      <p>Кофе для разработчика — топливо для новых коммитов ☕ Если TaskFlow сэкономил вам хоть один пропущенный дедлайн — можно считать, что чашка эспрессо уже заслужена 🙂 Спасибо ❤</p>
+    </div>
+
+    <div class="support-methods">
+
+      <div class="support-card support-cloudtips reveal">
+        <div class="support-title">
+          <span class="support-icon" aria-hidden="true">💳</span>
+          CloudTips
+        </div>
+        <div class="support-network">Россия · карты РФ</div>
+        <p class="support-hint">Оплата через обычную банковскую карту. Самый простой вариант, если вы в России.</p>
+        <a class="support-cta" href="https://pay.cloudtips.ru/p/83f4d553" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Открыть CloudTips
+        </a>
+      </div>
+
+      <div class="support-card reveal">
+        <div class="support-title">
+          <span class="support-icon" aria-hidden="true">🪙</span>
+          USDT TRC-20
+        </div>
+        <div class="support-network">Tron / TRC-20</div>
+        <div class="support-qr">
+          <img src="qr-usdt_trc.svg" alt="QR-код USDT TRC-20" width="128" height="128">
+        </div>
+        <div class="support-address" id="addr-usdt-trc">TJv97nWcARwvNTR6N62SW3TM2goo6gTpUZ</div>
+        <button type="button" class="support-copy" data-copy="addr-usdt-trc">Копировать</button>
+      </div>
+
+      <div class="support-card reveal">
+        <div class="support-title">
+          <span class="support-icon" aria-hidden="true">🪙</span>
+          TON
+        </div>
+        <div class="support-network">The Open Network</div>
+        <div class="support-qr">
+          <img src="qr-ton.svg" alt="QR-код TON" width="128" height="128">
+        </div>
+        <div class="support-address" id="addr-ton">UQDphkFo74Ff8yG92mYZk7wpclgdpjs666Qn9m1HvJ51becx</div>
+        <button type="button" class="support-copy" data-copy="addr-ton">Копировать</button>
+      </div>
+
+      <div class="support-card reveal">
+        <div class="support-title">
+          <span class="support-icon" aria-hidden="true">🪙</span>
+          USDT ERC-20
+        </div>
+        <div class="support-network">Ethereum / ERC-20</div>
+        <div class="support-qr">
+          <img src="qr-usdt_erc.svg" alt="QR-код USDT ERC-20" width="128" height="128">
+        </div>
+        <div class="support-address" id="addr-usdt-erc">0x316Da7F3930Cc8c45Ff689181f8053e5d45C9300</div>
+        <button type="button" class="support-copy" data-copy="addr-usdt-erc">Копировать</button>
+      </div>
+
+    </div>
+
+    <div class="support-disclaimer reveal">
+      <strong>⚠ Важно про сети крипты.</strong> Перевод строго в указанной валюте, в указанной сети, на соответствующий адрес. Отправка USDT TRC-20 на ERC-20-адрес (или наоборот), TON на Ethereum-адрес и т.п. — приведёт к <strong>безвозвратной</strong> потере средств. Всегда сверяйте сеть перед отправкой. Спасибо и хорошего Вам дня!
+    </div>
   </div>
 </section>
 
@@ -603,6 +828,36 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Copy-to-clipboard for support addresses
+document.querySelectorAll('.support-copy').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const targetId = btn.getAttribute('data-copy');
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (!target) return;
+    const text = target.textContent.trim();
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (_) {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      document.body.removeChild(ta);
+    }
+    const original = btn.textContent;
+    btn.textContent = 'Скопировано';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 1400);
+  });
+});
 </script>
 
 </body>
