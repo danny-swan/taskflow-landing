@@ -172,6 +172,91 @@ h1, h2, h3 {
   background: var(--surface);
   color: var(--text);
 }
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn-secondary:hover {
+  background: var(--surface-hover, var(--surface));
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* macOS install-instructions modal */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 560px;
+  width: 100%;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+.modal h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+}
+.modal .modal-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+.modal ol {
+  padding-left: 22px;
+  margin: 0 0 16px;
+  line-height: 1.55;
+  font-size: 14px;
+}
+.modal ol li { margin-bottom: 6px; }
+.modal code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  word-break: break-all;
+}
+.modal .modal-note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 8px 0 20px;
+}
+.modal-actions {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 18px;
+}
+.modal-actions .btn { padding: 11px 18px; font-size: 14px; }
+.modal-close {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: transparent; border: none;
+  color: var(--text-muted);
+  font-size: 22px; line-height: 1;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+.modal-close:hover { color: var(--text); }
+.modal-wrap { position: relative; }
 
 .hero-meta {
   margin-top: 28px;
@@ -554,20 +639,20 @@ h1, h2, h3 {
 <header class="hero container">
   <div class="eyebrow">
     <span class="eyebrow-dot"></span>
-    <span id="hero-version">v0.9.31 — стабильный релиз</span>
+    <span id="hero-version">v0.9.32 — стабильный релиз</span>
   </div>
-  <h1><span class="accent">TaskFlow</span> — удобный менеджер задач для Windows</h1>
+  <h1><span class="accent">TaskFlow</span> — удобный менеджер задач для Windows и macOS</h1>
   <p class="hero-sub">
     Настольное приложение, которое подстраивается под ваш рабочий процесс. Канбан, календарь, дашборд, гибкие статусы — всё, что нужно, чтобы держать дела под контролем.
   </p>
   <div class="hero-cta">
     <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.851"/></svg>
       Скачать для Windows
     </a>
-    <a href="https://github.com/danny-swan/taskflow-app" class="btn btn-ghost" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.06c-3.2.7-3.87-1.37-3.87-1.37-.52-1.34-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.19 1.18a11 11 0 0 1 5.8 0c2.22-1.5 3.19-1.18 3.19-1.18.62 1.6.23 2.77.11 3.06.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.15v3.19c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-      Открыть на GitHub
+    <a href="#" class="btn btn-secondary download-macos" data-asset-pattern="universal.dmg">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+      Скачать для macOS
     </a>
   </div>
   <div class="hero-meta">
@@ -577,7 +662,7 @@ h1, h2, h3 {
     </span>
     <span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Windows 10 / 11
+      Windows 10 / 11 · macOS 10.13+
     </span>
     <span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -694,12 +779,57 @@ h1, h2, h3 {
   <div class="container">
     <h2>Начните доводить дела до конца сегодня</h2>
     <p>Скачивайте и используйте TaskFlow, чтобы работать спокойно, комфортно и с ясной головой — задачи под рукой, приоритеты на месте, ничего не забыто.</p>
-    <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span id="cta-download-label">Скачать TaskFlow v0.9.31</span>
-    </a>
+    <div class="hero-cta">
+      <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.851"/></svg>
+        <span id="cta-download-label">Скачать для Windows</span>
+      </a>
+      <a href="#" class="btn btn-secondary download-macos" data-asset-pattern="universal.dmg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        Скачать для macOS
+      </a>
+    </div>
   </div>
 </section>
+
+<!-- macOS install-instructions modal (v0.9.33) -->
+<div class="modal-backdrop" id="macos-modal" aria-hidden="true" role="dialog" aria-labelledby="macos-modal-title">
+  <div class="modal modal-wrap">
+    <button type="button" class="modal-close" id="macos-modal-close" aria-label="Закрыть">×</button>
+    <h3 id="macos-modal-title">⚠ Как установить TaskFlow на macOS</h3>
+    <p class="modal-subtitle">Сборка не подписана Apple-сертификатом, поэтому при первом запуске macOS Gatekeeper покажет предупреждение. Это нормально — вот как открыть приложение.</p>
+
+    <div style="font-weight:600;font-size:14px;margin-bottom:8px;">Способ 1 — через Finder (проще)</div>
+    <ol>
+      <li>Откройте скачанный <code>.dmg</code> и перетащите TaskFlow в папку <code>Applications</code></li>
+      <li>Откройте папку <code>Applications</code>, кликните правой кнопкой мыши (или Control-клик) по TaskFlow → <b>«Открыть»</b></li>
+      <li>В появившемся диалоге снова нажмите <b>«Открыть»</b></li>
+      <li>Готово — дальше приложение будет запускаться обычным двойным кликом</li>
+    </ol>
+
+    <div style="font-weight:600;font-size:14px;margin:16px 0 8px;">Способ 2 — через терминал</div>
+    <ol>
+      <li>Установите приложение в <code>Applications</code></li>
+      <li>Откройте Терминал и выполните: <code>xattr -d com.apple.quarantine /Applications/TaskFlow.app</code></li>
+      <li>После этого приложение открывается без предупреждений</li>
+    </ol>
+
+    <div class="modal-note">
+      ℹ️ Приложение безопасно — исходный код открыт, сборка идёт через GitHub Actions. Подписи пока нет, потому что Apple Developer ID — платный ($99/год), собираем пользователей macOS перед покупкой.
+    </div>
+
+    <div class="modal-actions">
+      <a href="#" id="macos-modal-download" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Скачать .dmg
+      </a>
+      <a href="INSTALL_MACOS.txt" download="INSTALL_MACOS.txt" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Скачать инструкцию
+      </a>
+    </div>
+  </div>
+</div>
 
 <section class="support" id="support">
   <div class="container">
@@ -793,7 +923,8 @@ window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 // Обновляем версионный баннер и кнопки скачивания через GitHub API.
-// URL в href и hardcoded-метки ведут на текущий базовый релиз — fallback на случай, если JS отвалится.
+// v0.9.33: теперь обновляем обе кнопки — Windows (.exe) и macOS (.dmg).
+let latestDmgUrl = null;
 (async () => {
   try {
     const r = await fetch('https://api.github.com/repos/danny-swan/taskflow-app/releases/latest', {
@@ -801,21 +932,64 @@ onScroll();
     });
     if (!r.ok) return;
     const rel = await r.json();
-    const asset = (rel.assets || []).find(a => /x64-setup\.exe$/i.test(a.name));
-    if (!asset) return;
-    const url = asset.browser_download_url;
-    document.querySelectorAll('.download-latest').forEach(a => {
-      a.href = url;
-      a.setAttribute('download', asset.name);
-    });
+
+    // Windows asset
+    const winAsset = (rel.assets || []).find(a => /x64-setup\.exe$/i.test(a.name));
+    if (winAsset) {
+      document.querySelectorAll('.download-latest').forEach(a => {
+        a.href = winAsset.browser_download_url;
+        a.setAttribute('download', winAsset.name);
+      });
+    }
+
+    // macOS asset (Universal DMG)
+    const dmgAsset = (rel.assets || []).find(a => /universal\.dmg$/i.test(a.name));
+    if (dmgAsset) {
+      latestDmgUrl = dmgAsset.browser_download_url;
+      const modalDl = document.getElementById('macos-modal-download');
+      if (modalDl) {
+        modalDl.href = latestDmgUrl;
+        modalDl.setAttribute('download', dmgAsset.name);
+      }
+    }
+
     if (rel.tag_name) {
-      const label = document.getElementById('cta-download-label');
-      if (label) label.textContent = 'Скачать TaskFlow ' + rel.tag_name;
       const hero = document.getElementById('hero-version');
       if (hero) hero.textContent = rel.tag_name + ' — стабильный релиз';
     }
   } catch (_) {}
 })();
+
+// macOS modal: открываем при клике по любой .download-macos, закрываем по крестику/Esc/бэкдропу
+const macosModal = document.getElementById('macos-modal');
+const macosModalClose = document.getElementById('macos-modal-close');
+function openMacosModal() {
+  if (!macosModal) return;
+  macosModal.classList.add('open');
+  macosModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeMacosModal() {
+  if (!macosModal) return;
+  macosModal.classList.remove('open');
+  macosModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.download-macos').forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    openMacosModal();
+  });
+});
+if (macosModalClose) macosModalClose.addEventListener('click', closeMacosModal);
+if (macosModal) {
+  macosModal.addEventListener('click', (e) => {
+    if (e.target === macosModal) closeMacosModal();
+  });
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && macosModal && macosModal.classList.contains('open')) closeMacosModal();
+});
 
 // Reveal on scroll
 const io = new IntersectionObserver((entries) => {
