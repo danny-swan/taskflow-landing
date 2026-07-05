@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TaskFlow — удобный менеджер задач для Windows и macOS</title>
-<meta name="description" content="TaskFlow — настольный менеджер задач для Windows и macOS. Канбан, календарь, дашборд, гибкие статусы. Настраивается под ваш рабочий процесс.">
+<title>TaskFlow — a thoughtful task manager for Windows and macOS</title>
+<meta name="description" content="TaskFlow — a desktop task manager for Windows and macOS. Kanban, calendar, dashboard, flexible statuses. Adapts to your workflow.">
 <meta name="theme-color" content="#FBFAF6">
 <meta name="color-scheme" content="light">
 
-<meta property="og:title" content="TaskFlow — удобный менеджер задач для Windows и macOS">
+<meta property="og:title" content="TaskFlow — a thoughtful task manager for Windows and macOS">
 <link rel="alternate" hreflang="ru" href="https://yourtaskflow.app/">
 <link rel="alternate" hreflang="en" href="https://yourtaskflow.app/en/">
 <link rel="alternate" hreflang="x-default" href="https://yourtaskflow.app/">
-<meta property="og:description" content="Настольный менеджер задач: канбан, календарь, дашборд, гибкие статусы. Работает без интернета.">
+<meta property="og:description" content="A desktop task manager: Kanban, calendar, dashboard, flexible statuses. Works offline.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="screenshot.png">
+<meta property="og:image" content="/screenshot.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
 
 <style>
 :root {
-  /* Светлая тема — тёпло-кремовая, светлее и мягче */
+  /* Light theme — warm cream, lighter and softer */
   --bg: #FBFAF6;
   --surface: #FFFFFF;
   --surface-alt: #F5F3EC;
@@ -38,8 +38,7 @@
   --shadow-md: 0 12px 40px -14px rgba(40, 37, 29, 0.16);
   --radius: 14px;
 }
-/* Тёмная тема отключена по умолчанию — превью в перплексити принудительно тёмное,
-   а нам нужен светлый лендинг. При желании можно вернуть через prefers-color-scheme. */
+/* Dark theme is disabled by default — the site keeps a warm light look. */
 
 * { box-sizing: border-box; }
 html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
@@ -694,14 +693,14 @@ h1, h2, h3 {
       TaskFlow
     </a>
     <div class="nav-links">
-      <a href="#features" class="nav-link-item">Возможности</a>
-      <a href="#how" class="nav-link-item">Как начать</a>
-      <a href="#support" class="nav-link-item">Поддержать</a>
+      <a href="#features" class="nav-link-item">Features</a>
+      <a href="#how" class="nav-link-item">Get started</a>
+      <a href="#support" class="nav-link-item">Support</a>
       <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener" class="nav-link-item">GitHub</a>
 
       <div class="nav-download" id="nav-download">
         <button type="button" class="nav-download-btn" id="nav-download-btn" aria-haspopup="menu" aria-expanded="false">
-          Скачать
+          Download
           <svg class="nav-download-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="nav-download-menu" role="menu">
@@ -716,9 +715,9 @@ h1, h2, h3 {
         </div>
       </div>
 
-      <div class="nav-lang" role="group" aria-label="Язык / Language">
-        <a href="/" class="active" lang="ru">RU</a>
-        <a href="/en/" lang="en">EN</a>
+      <div class="nav-lang" role="group" aria-label="Language / Язык">
+        <a href="/" lang="ru">RU</a>
+        <a href="/en/" class="active" lang="en">EN</a>
       </div>
     </div>
   </div>
@@ -727,26 +726,26 @@ h1, h2, h3 {
 <header class="hero container">
   <div class="eyebrow">
     <span class="eyebrow-dot"></span>
-    <span id="hero-version">v0.9.32 — стабильный релиз</span>
+    <span id="hero-version">v0.9.32 — stable release</span>
   </div>
-  <h1><span class="accent">TaskFlow</span> — удобный менеджер задач для Windows и macOS</h1>
+  <h1><span class="accent">TaskFlow</span> — a thoughtful task manager for Windows and macOS</h1>
   <p class="hero-sub">
-    Настольное приложение, которое подстраивается под ваш рабочий процесс. Канбан, календарь, дашборд, гибкие статусы — всё, что нужно, чтобы держать дела под контролем.
+    A desktop app that adapts to your workflow. Kanban, calendar, dashboard, flexible statuses — everything you need to keep your work under control.
   </p>
   <div class="hero-cta">
     <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.851"/></svg>
-      Скачать для Windows
+      Download for Windows
     </a>
     <a href="#" class="btn btn-secondary download-macos" data-asset-pattern="universal.dmg">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-      Скачать для macOS
+      Download for macOS
     </a>
   </div>
   <div class="hero-meta">
     <span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Открытый исходный код
+      Open source
     </span>
     <span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -754,7 +753,7 @@ h1, h2, h3 {
     </span>
     <span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Автообновления
+      Auto-updates
     </span>
   </div>
 </header>
@@ -762,58 +761,58 @@ h1, h2, h3 {
 <section class="screenshot-wrap container reveal">
   <div class="screenshot">
     <div class="screenshot-chrome"><div class="screenshot-dots"><span></span><span></span><span></span></div></div>
-    <img src="screenshot.png" alt="Интерфейс TaskFlow: список задач, категории, боковое меню" width="1080" height="675" loading="eager">
+    <img src="/screenshot.png" alt="TaskFlow interface: task list, categories, sidebar" width="1080" height="675" loading="eager">
   </div>
 </section>
 
 <section class="features" id="features">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Удобный рабочий инструмент. Настраивается под вас.</h2>
-      <p>TaskFlow не пытается заменить Notion или Jira. Он собирает главное — простой и понятный интерфейс, которым удобно пользоваться каждый день.</p>
+      <h2>A comfortable working tool. Adapts to you.</h2>
+      <p>TaskFlow doesn't try to replace Notion or Jira. It focuses on the essentials — a simple, clear interface that's comfortable to use every day.</p>
     </div>
     <div class="features-grid">
       <div class="feature reveal">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
         </div>
-        <h3>Канбан и список</h3>
-        <p>Переключайтесь между списком и канбан-доской. Drag &amp; drop между колонками. Пять статусов по умолчанию — «Важно», «Сегодня», «В процессе», «Взять в работу», «Выполнено» — и возможность настроить свои под ваши процессы.</p>
+        <h3>Kanban and list</h3>
+        <p>Switch between list and Kanban board. Drag &amp; drop between columns. Five default statuses — «Important», «Today», «In progress», «To do», «Completed» — plus the ability to configure your own to match your process.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-        <h3>Календарь и дедлайны</h3>
-        <p>Просроченные и сегодняшние задачи подсвечиваются автоматически. Смотрите загрузку по месяцам, назначайте дедлайны, группируйте по категориям — всё сразу видно, ничего не теряется.</p>
+        <h3>Calendar and deadlines</h3>
+        <p>Overdue and today's tasks are highlighted automatically. See workload by month, assign deadlines, group by category — everything is visible at a glance, nothing gets lost.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 12l4-4 4 4 6-6"/></svg>
         </div>
-        <h3>Дашборд и статистика</h3>
-        <p>Сколько задач сделали за неделю, где буксуете, какая категория съедает больше времени. Данные — чтобы принимать решения, а не для красоты.</p>
+        <h3>Dashboard and statistics</h3>
+        <p>How many tasks you closed this week, where you're stuck, which category eats the most time. Data to make decisions with — not for decoration.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
-        <h3>Русский и английский</h3>
-        <p>Полная локализация интерфейса. Переключение языка прямо в приложении — без перезапуска. Одинаково удобно на русском и английском, без потерь в терминах.</p>
+        <h3>Russian and English</h3>
+        <p>Full interface localization. Switch language directly in the app — no restart needed. Equally comfortable in Russian and English, no translation losses.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h3>Категории и приоритеты</h3>
-        <p>Свои цветовые категории для проектов, приоритетов и контекстов. Быстрые фильтры в один клик — покажет только то, что важно прямо сейчас.</p>
+        <h3>Categories and priorities</h3>
+        <p>Custom color categories for projects, priorities, and contexts. One-click quick filters — show only what matters right now.</p>
       </div>
       <div class="feature reveal">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
         </div>
-        <h3>Экспорт и импорт JSON</h3>
-        <p>Ваши данные — ваши. Экспортируйте всё в JSON одним кликом, импортируйте на другом устройстве. Никакого lock-in.</p>
+        <h3>JSON export and import</h3>
+        <p>Your data is yours. Export everything to JSON with one click, import on another device. No lock-in.</p>
       </div>
     </div>
   </div>
@@ -822,24 +821,24 @@ h1, h2, h3 {
 <section class="how" id="how">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Три шага до первой задачи</h2>
-      <p>Скачали, зарегистрировались, начали работать. Никаких сложных настроек — всё готово из коробки.</p>
+      <h2>Three steps to your first task</h2>
+      <p>Download, sign up, start working. No complicated setup — everything works out of the box.</p>
     </div>
     <div class="steps">
       <div class="step reveal">
         <div class="step-num">01</div>
-        <h3>Скачайте .exe</h3>
-        <p>Portable-версия или NSIS-инсталлятор для Windows — без прав администратора. MSI-инсталлятор — если нужен стандартный вариант установки.</p>
+        <h3>Download the installer</h3>
+        <p>Portable version or NSIS installer for Windows — no admin rights required. MSI installer for the standard installation path. Universal DMG for macOS (Intel + Apple Silicon).</p>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
-        <h3>Создайте аккаунт</h3>
-        <p>Регистрация по email или через Google — займёт минуту. Аккаунт нужен для безопасности данных и будущих возможностей.</p>
+        <h3>Create an account</h3>
+        <p>Sign up with email or Google — takes a minute. The account is used for data security and future features.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">03</div>
-        <h3>Настройте под себя</h3>
-        <p>Добавьте задачи, категории, приоритеты. При желании — свои статусы. Через пять минут интерфейс будет уже как родной.</p>
+        <h3>Make it yours</h3>
+        <p>Add tasks, categories, priorities. Custom statuses if you want. In five minutes the interface will feel like your own.</p>
       </div>
     </div>
   </div>
@@ -848,8 +847,8 @@ h1, h2, h3 {
 <section class="tech">
   <div class="container">
     <div class="section-head reveal">
-      <h2>Технологии, которым можно доверять</h2>
-      <p>Открытый стек. Автообновления. Тесты на каждый релиз.</p>
+      <h2>Technology you can trust</h2>
+      <p>Open stack. Auto-updates. Tests on every release.</p>
     </div>
     <div class="tech-list reveal">
       <span class="tech-chip">Tauri</span>
@@ -865,16 +864,16 @@ h1, h2, h3 {
 
 <section class="cta">
   <div class="container">
-    <h2>Начните доводить дела до конца сегодня</h2>
-    <p>Скачивайте и используйте TaskFlow, чтобы работать спокойно, комфортно и с ясной головой — задачи под рукой, приоритеты на месте, ничего не забыто.</p>
+    <h2>Start getting things done today</h2>
+    <p>Download and use TaskFlow to work calmly, comfortably, with a clear head — tasks at hand, priorities in place, nothing forgotten.</p>
     <div class="hero-cta">
       <a href="https://github.com/danny-swan/taskflow-app/releases/latest/download/TaskFlow_0.9.31_x64-setup.exe" class="btn btn-primary download-latest" data-asset-pattern="x64-setup.exe" id="cta-download">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.851"/></svg>
-        <span id="cta-download-label">Скачать для Windows</span>
+        <span id="cta-download-label">Download for Windows</span>
       </a>
       <a href="#" class="btn btn-secondary download-macos" data-asset-pattern="universal.dmg">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-        Скачать для macOS
+        Download for macOS
       </a>
     </div>
   </div>
@@ -883,37 +882,37 @@ h1, h2, h3 {
 <!-- macOS install-instructions modal (v0.9.33) -->
 <div class="modal-backdrop" id="macos-modal" aria-hidden="true" role="dialog" aria-labelledby="macos-modal-title">
   <div class="modal modal-wrap">
-    <button type="button" class="modal-close" id="macos-modal-close" aria-label="Закрыть">×</button>
-    <h3 id="macos-modal-title">⚠ Как установить TaskFlow на macOS</h3>
-    <p class="modal-subtitle">Сборка не подписана Apple-сертификатом, поэтому при первом запуске macOS Gatekeeper покажет предупреждение. Это нормально — вот как открыть приложение.</p>
+    <button type="button" class="modal-close" id="macos-modal-close" aria-label="Close">×</button>
+    <h3 id="macos-modal-title">⚠ How to install TaskFlow on macOS</h3>
+    <p class="modal-subtitle">The build is not signed with an Apple certificate, so macOS Gatekeeper will show a warning on first launch. That's normal — here's how to open the app.</p>
 
-    <div style="font-weight:600;font-size:14px;margin-bottom:8px;">Способ 1 — через Finder (проще)</div>
+    <div style="font-weight:600;font-size:14px;margin-bottom:8px;">Option 1 — via Finder (easier)</div>
     <ol>
-      <li>Откройте скачанный <code>.dmg</code> и перетащите TaskFlow в папку <code>Applications</code></li>
-      <li>Откройте папку <code>Applications</code>, кликните правой кнопкой мыши (или Control-клик) по TaskFlow → <b>«Открыть»</b></li>
-      <li>В появившемся диалоге снова нажмите <b>«Открыть»</b></li>
-      <li>Готово — дальше приложение будет запускаться обычным двойным кликом</li>
+      <li>Open the downloaded <code>.dmg</code> and drag TaskFlow into the <code>Applications</code> folder</li>
+      <li>Open the <code>Applications</code> folder, right-click (or Control-click) TaskFlow → <b>«Open»</b></li>
+      <li>In the confirmation dialog click <b>«Open»</b> again</li>
+      <li>Done — from now on the app opens with a normal double-click</li>
     </ol>
 
-    <div style="font-weight:600;font-size:14px;margin:16px 0 8px;">Способ 2 — через терминал</div>
+    <div style="font-weight:600;font-size:14px;margin:16px 0 8px;">Option 2 — via Terminal</div>
     <ol>
-      <li>Установите приложение в <code>Applications</code></li>
-      <li>Откройте Терминал и выполните: <code>xattr -d com.apple.quarantine /Applications/TaskFlow.app</code></li>
-      <li>После этого приложение открывается без предупреждений</li>
+      <li>Install the app into <code>Applications</code></li>
+      <li>Open Terminal and run: <code>xattr -d com.apple.quarantine /Applications/TaskFlow.app</code></li>
+      <li>After that the app opens without any warnings</li>
     </ol>
 
     <div class="modal-note">
-      ℹ️ Приложение безопасно — исходный код открыт, сборка идёт через GitHub Actions. Подписи пока нет, потому что Apple Developer ID — платный ($99/год), собираем пользователей macOS перед покупкой.
+      ℹ️ The app is safe — the source is open and builds run via GitHub Actions. There is no signature yet because Apple Developer ID costs $99/year; we're gathering macOS users before buying.
     </div>
 
     <div class="modal-actions">
       <a href="#" id="macos-modal-download" class="btn btn-primary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Скачать .dmg
+        Download .dmg
       </a>
-      <a href="INSTALL_MACOS.txt" download="INSTALL_MACOS.txt" class="btn btn-secondary">
+      <a href="/INSTALL_MACOS.txt" download="INSTALL_MACOS.txt" class="btn btn-secondary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Скачать инструкцию
+        Download instructions
       </a>
     </div>
   </div>
@@ -922,11 +921,11 @@ h1, h2, h3 {
 <section class="support" id="support">
   <div class="container">
     <div class="support-head reveal">
-      <h2>Поддержать проект</h2>
-      <p>TaskFlow я делаю один и в свободное время — без навязчивой рекламы и лишнего сбора данных.</p>
-      <p>Если приложение и его функционал вам понравились, и вы хотите, чтобы оно продолжало развиваться, буду благодарен за поддержку. Всё идёт на новые фичи, шлифовку интерфейса и время на поддержку.</p>
-      <p>Кофе для разработчика — топливо для новых коммитов ☕ Так что если TaskFlow спас вам хотя бы один дедлайн, можно считать, что чашка эспрессо уже заслужена 🙂</p>
-      <p>Самое важное для меня — то, что вы пользуетесь TaskFlow, а любая сумма — приятный бонус. Спасибо ❤</p>
+      <h2>Support the project</h2>
+      <p>I build TaskFlow alone, in my free time — no intrusive ads, no unnecessary data collection.</p>
+      <p>If the app and its features are useful to you and you'd like to see it keep growing, I'd be grateful for any support. Everything goes into new features, interface polish, and the time to keep supporting it.</p>
+      <p>Coffee for the developer is fuel for new commits ☕ So if TaskFlow has saved you even a single deadline, an espresso is already well-earned 🙂</p>
+      <p>What matters most to me is that you're using TaskFlow — any amount is a nice bonus. Thank you ❤</p>
     </div>
 
     <div class="support-methods">
@@ -936,11 +935,11 @@ h1, h2, h3 {
           <span class="support-icon" aria-hidden="true">💳</span>
           CloudTips
         </div>
-        <div class="support-network">Россия · карты РФ</div>
-        <p class="support-hint">Оплата через обычную банковскую карту. Самый простой вариант, если вы в России.</p>
+        <div class="support-network">Russia · RU cards</div>
+        <p class="support-hint">Payment via a regular bank card. The simplest option if you're in Russia.</p>
         <a class="support-cta" href="https://pay.cloudtips.ru/p/83f4d553" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Открыть CloudTips
+          Open CloudTips
         </a>
       </div>
 
@@ -951,10 +950,10 @@ h1, h2, h3 {
         </div>
         <div class="support-network">Tron / TRC-20</div>
         <div class="support-qr">
-          <img src="qr-usdt_trc.svg" alt="QR-код USDT TRC-20" width="128" height="128">
+          <img src="/qr-usdt_trc.svg" alt="QR code for USDT TRC-20" width="128" height="128">
         </div>
         <div class="support-address" id="addr-usdt-trc">TJv97nWcARwvNTR6N62SW3TM2goo6gTpUZ</div>
-        <button type="button" class="support-copy" data-copy="addr-usdt-trc">Копировать</button>
+        <button type="button" class="support-copy" data-copy="addr-usdt-trc">Copy</button>
       </div>
 
       <div class="support-card reveal">
@@ -964,10 +963,10 @@ h1, h2, h3 {
         </div>
         <div class="support-network">The Open Network</div>
         <div class="support-qr">
-          <img src="qr-ton.svg" alt="QR-код TON" width="128" height="128">
+          <img src="/qr-ton.svg" alt="QR code for TON" width="128" height="128">
         </div>
         <div class="support-address" id="addr-ton">UQDphkFo74Ff8yG92mYZk7wpclgdpjs666Qn9m1HvJ51becx</div>
-        <button type="button" class="support-copy" data-copy="addr-ton">Копировать</button>
+        <button type="button" class="support-copy" data-copy="addr-ton">Copy</button>
       </div>
 
       <div class="support-card reveal">
@@ -977,16 +976,16 @@ h1, h2, h3 {
         </div>
         <div class="support-network">Ethereum / ERC-20</div>
         <div class="support-qr">
-          <img src="qr-usdt_erc.svg" alt="QR-код USDT ERC-20" width="128" height="128">
+          <img src="/qr-usdt_erc.svg" alt="QR code for USDT ERC-20" width="128" height="128">
         </div>
         <div class="support-address" id="addr-usdt-erc">0x316Da7F3930Cc8c45Ff689181f8053e5d45C9300</div>
-        <button type="button" class="support-copy" data-copy="addr-usdt-erc">Копировать</button>
+        <button type="button" class="support-copy" data-copy="addr-usdt-erc">Copy</button>
       </div>
 
     </div>
 
     <div class="support-disclaimer reveal">
-      <strong>⚠</strong> Если захотите перевести криптой, то не забывайте, что перевод строго на указанную валюту в указанной сети на соответствующий адрес. Отправка USDT TRC-20 на ERC-20-адрес (или наоборот), TON на Ethereum-адрес и т.п. — приведёт к <strong>БЕЗВОЗВРАТНОЙ</strong> потере средств. Всегда сверяйте сеть перед отправкой. Спасибо и хорошего Вам дня!
+      <strong>⚠</strong> If you're sending crypto, remember: transfer only in the specified currency, on the specified network, to the matching address. Sending USDT TRC-20 to an ERC-20 address (or vice versa), TON to an Ethereum address, and so on — leads to <strong>PERMANENT</strong> loss of funds. Always double-check the network before sending. Thanks, and have a great day!
     </div>
   </div>
 </section>
@@ -995,9 +994,9 @@ h1, h2, h3 {
   <div class="container footer-inner">
     <div>© 2026 TaskFlow · <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a></div>
     <div class="footer-links">
-      <a href="/privacy.html">Политика конфиденциальности</a>
+      <a href="/privacy.html">Privacy policy</a>
       <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/danny-swan/taskflow-app/releases" target="_blank" rel="noopener">Релизы</a>
+      <a href="https://github.com/danny-swan/taskflow-app/releases" target="_blank" rel="noopener">Releases</a>
       <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">Issues</a>
     </div>
   </div>
@@ -1043,8 +1042,8 @@ if (navDownload && navDownloadBtn) {
   });
 }
 
-// Обновляем версионный баннер и кнопки скачивания через GitHub API.
-// v0.9.33: теперь обновляем обе кнопки — Windows (.exe) и macOS (.dmg).
+// Update the version banner and download buttons via the GitHub API.
+// v0.9.33: update both buttons — Windows (.exe) and macOS (.dmg).
 let latestDmgUrl = null;
 (async () => {
   try {
@@ -1076,12 +1075,12 @@ let latestDmgUrl = null;
 
     if (rel.tag_name) {
       const hero = document.getElementById('hero-version');
-      if (hero) hero.textContent = rel.tag_name + ' — стабильный релиз';
+      if (hero) hero.textContent = rel.tag_name + ' — stable release';
     }
   } catch (_) {}
 })();
 
-// macOS modal: открываем при клике по любой .download-macos, закрываем по крестику/Esc/бэкдропу
+// macOS modal: open on any .download-macos click, close via ✕ / Esc / backdrop
 const macosModal = document.getElementById('macos-modal');
 const macosModalClose = document.getElementById('macos-modal-close');
 function openMacosModal() {
@@ -1145,7 +1144,7 @@ document.querySelectorAll('.support-copy').forEach(btn => {
       document.body.removeChild(ta);
     }
     const original = btn.textContent;
-    btn.textContent = 'Скопировано';
+    btn.textContent = 'Copied';
     btn.classList.add('copied');
     setTimeout(() => {
       btn.textContent = original;
