@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Политика конфиденциальности — TaskFlow</title>
+<meta name="description" content="Политика конфиденциальности TaskFlow — какие данные мы собираем (аккаунт, синхронизация, платежи), как храним и защищаем, ваши права по 152-ФЗ и GDPR." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/legal/legal.css" />
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="nav-brand">TaskFlow</a>
+    <div class="nav-links">
+      <a href="/legal/offer.html">Оферта</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/legal/return.html">Возврат</a>
+      <a href="/legal/terms.html">Terms</a>
+    </div>
+    <div class="lang-switch">
+      <a href="#ru" class="active">RU</a>
+      <a href="#en">EN</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- RUSSIAN -->
+    <section id="ru">
+      <h1>Политика конфиденциальности TaskFlow</h1>
+      <p class="effective-date">Версия 1.0 · Дата вступления в силу: 06.07.2026</p>
+
+      <div class="toc">
+        <p>Содержание</p>
+        <ol>
+          <li><a href="#ru-who">Кто мы</a></li>
+          <li><a href="#ru-data">Какие данные мы собираем</a></li>
+          <li><a href="#ru-local-cloud">Локальные и облачные данные</a></li>
+          <li><a href="#ru-payments">Данные о платежах (ЮKassa)</a></li>
+          <li><a href="#ru-basis">Правовые основания обработки</a></li>
+          <li><a href="#ru-retention">Срок хранения</a></li>
+          <li><a href="#ru-rights">Права субъекта персональных данных</a></li>
+          <li><a href="#ru-cookies">Cookies и аналитика</a></li>
+          <li><a href="#ru-thirdparty">Передача данных третьим лицам</a></li>
+          <li><a href="#ru-intl">Международная передача данных</a></li>
+          <li><a href="#ru-gdpr">Соответствие 152-ФЗ и GDPR</a></li>
+          <li><a href="#ru-age">Возрастные ограничения</a></li>
+          <li><a href="#ru-contacts">Контакты</a></li>
+          <li><a href="#ru-changes">Изменения политики</a></li>
+        </ol>
+      </div>
+
+      <h2 id="ru-who">1. Кто мы</h2>
+      <p>TaskFlow — это персональный менеджер задач с облачной синхронизацией, разрабатываемый Даниилом Лебедевым (danny-swan). Локальное приложение распространяется под лицензией <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a>, платные облачные функции (синхронизация, entitlements) предоставляются на условиях <a href="/legal/offer.html">Публичной оферты</a>.</p>
+      <p>Мы выступаем оператором персональных данных в значении Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных», а в отношении пользователей из Европейского союза и Европейской экономической зоны — контроллером данных в значении Общего регламента по защите данных (GDPR).</p>
+      <p><strong>Контакт по вопросам обработки персональных данных (DPO):</strong> <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. Резервный канал связи: <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
+
+      <h2 id="ru-data">2. Какие данные мы собираем</h2>
+
+      <h3>2.1. Данные аккаунта</h3>
+      <ul>
+        <li><strong>Email</strong> — используется для входа, восстановления пароля и связи по вопросам Подписки;</li>
+        <li><strong>Хеш пароля</strong> — при регистрации через email/password. Сам пароль нигде не хранится, только необратимый bcrypt-хеш;</li>
+        <li><strong>Дата регистрации и последнего входа</strong> — генерируются автоматически;</li>
+        <li><strong>Статус Подписки и Тариф</strong> — Free / Monthly / Annual / Lifetime, срок действия, статус триала;</li>
+        <li><strong>Идентификаторы устройств</strong>, зарегистрированных для синхронизации.</li>
+      </ul>
+
+      <h3>2.2. Данные синхронизации задач</h3>
+      <p>При включённой облачной синхронизации содержимое ваших задач (названия, описания, теги, статусы, дедлайны, шаблоны задач, события просроченных задач) передаётся и хранится в облачной базе данных Supabase для обеспечения доступа с нескольких устройств. При отключённой синхронизации задачи хранятся исключительно локально (см. раздел 3).</p>
+
+      <h3>2.3. Данные о платежах</h3>
+      <p>См. подробности в разделе 4 «Данные о платежах».</p>
+
+      <h3>2.4. Телеметрия</h3>
+      <ul>
+        <li><strong>Тип события:</strong> регистрация, вход/выход, старт приложения, создание/удаление/выполнение задачи (без содержимого), события синхронизации (успех/ошибка), события оплаты (инициирована/завершена/ошибка — без платёжных реквизитов);</li>
+        <li><strong>Версия приложения</strong> (например, 0.9.35);</li>
+        <li><strong>Операционная система</strong> и её версия;</li>
+        <li><strong>Время события</strong>.</li>
+      </ul>
+
+      <h3>2.5. Что мы НЕ собираем</h3>
+      <ul>
+        <li>Полные реквизиты банковских карт — их обрабатывает исключительно ЮKassa в соответствии со стандартом PCI DSS;</li>
+        <li>Пароли в открытом виде — только необратимые bcrypt-хеши;</li>
+        <li>Содержимое задач при отключённой синхронизации — данные не покидают устройство;</li>
+        <li>Рекламную или маркетинговую аналитику;</li>
+        <li>Данные для передачи третьим лицам в коммерческих целях, не связанных с оказанием Услуг.</li>
+      </ul>
+
+      <h2 id="ru-local-cloud">3. Локальные и облачные данные</h2>
+      <table>
+        <thead><tr><th>Тип данных</th><th>Где хранится</th><th>Особенности</th></tr></thead>
+        <tbody>
+          <tr><td>Локальные данные (задачи, теги, настройки при выключенной синхронизации)</td><td>SQLite-файл на устройстве пользователя</td><td>Полностью под контролем пользователя; не шифруется автоматически средствами приложения — рекомендуем использовать шифрование диска средствами ОS (BitLocker/FileVault)</td></tr>
+          <tr><td>Синхронизированные задачи, статусы, теги, шаблоны, события просрочки</td><td>Supabase Postgres, регион Frankfurt (eu-central-1)</td><td>Передаётся по TLS-соединению; доступ ограничен на уровне Row-Level Security (RLS) — каждый пользователь видит только свои строки</td></tr>
+          <tr><td>Данные аккаунта и Подписки</td><td>Supabase Postgres, регион Frankfurt (eu-central-1)</td><td>Включая статус entitlements (прав доступа к платным функциям)</td></tr>
+        </tbody>
+      </table>
+      <p>Мы рекомендуем не полагаться исключительно на локальное хранение для важных данных без резервного копирования — включение синхронизации создаёт облачную копию ваших задач.</p>
+
+      <h2 id="ru-payments">4. Данные о платежах (ЮKassa)</h2>
+      <p>Для приёма платежей мы используем платёжного провайдера ООО «НКО «ЮMoney»» (сервис ЮKassa, yookassa.ru). При оформлении Подписки происходит следующий обмен данными:</p>
+      <h3>4.1. Что мы передаём в ЮKassa при оформлении платежа</h3>
+      <ul>
+        <li>Email аккаунта (для формирования чека и уведомлений о платеже);</li>
+        <li>Сумма и валюта платежа;</li>
+        <li>Идентификатор выбранного Тарифа;</li>
+        <li>Объект чека (receipt) для регистрации в ФНС в рамках режима «Налог на профессиональный доход» — состав, сумма, статус самозанятого Исполнителя.</li>
+      </ul>
+      <h3>4.2. Что мы получаем от ЮKassa</h3>
+      <ul>
+        <li><strong>Идентификатор платежа (payment_id)</strong> — используется для сверки и активации Подписки;</li>
+        <li><strong>Статус платежа</strong> (успешно / отклонён / возврат);</li>
+        <li><strong>Данные чека НПД</strong> — ссылка на фискальный чек, зарегистрированный через приложение «Мой налог»;</li>
+        <li>Маскированные данные способа оплаты (например, последние 4 цифры карты) — исключительно для отображения пользователю истории платежей, без возможности их использования для повторных списаний без явного согласия.</li>
+      </ul>
+      <p>Полные банковские реквизиты (номер карты, CVC) никогда не передаются нам и не проходят через нашу инфраструктуру — ввод данных карты происходит непосредственно на защищённой странице ЮKassa.</p>
+
+      <h2 id="ru-basis">5. Правовые основания обработки (152-ФЗ)</h2>
+      <ul>
+        <li><strong>Исполнение договора</strong> (ст. 6 152-ФЗ, ст. 6(1)(b) GDPR) — обработка данных аккаунта, синхронизации и платежей необходима для оказания Услуг по <a href="/legal/offer.html">оферте</a>;</li>
+        <li><strong>Согласие субъекта персональных данных</strong> — в части телеметрии и необязательной аналитики;</li>
+        <li><strong>Законный интерес оператора</strong> (ст. 6(1)(f) GDPR) — обеспечение безопасности Сервиса, предотвращение мошенничества, улучшение продукта;</li>
+        <li><strong>Исполнение требований законодательства</strong> — формирование и хранение чеков НПД в соответствии с 422-ФЗ.</li>
+      </ul>
+
+      <h2 id="ru-retention">6. Срок хранения</h2>
+      <ul>
+        <li>Данные аккаунта и синхронизации — пока существует Аккаунт;</li>
+        <li>После удаления Аккаунта — данные удаляются немедленно, серверные логи Supabase — в течение 30 дней;</li>
+        <li>Данные о платежах и чеки НПД — хранятся в течение сроков, установленных налоговым законодательством РФ (как правило, не менее 4 лет), даже после удаления Аккаунта, в целях исполнения законных обязательств Исполнителя;</li>
+        <li>Телеметрия — до 12 месяцев в агрегированном виде.</li>
+      </ul>
+
+      <h2 id="ru-rights">7. Права субъекта персональных данных</h2>
+      <p>В соответствии с 152-ФЗ и (для пользователей из ЕС) GDPR вы имеете право:</p>
+      <ol>
+        <li><strong>Получить копию своих данных</strong> — запрос на <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> или issue с меткой <code>data-request</code> в <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>; выгрузка предоставляется в течение 30 дней;</li>
+        <li><strong>Исправить неточные данные</strong>;</li>
+        <li><strong>Удалить Аккаунт</strong> — Настройки → Аккаунт → «Удалить аккаунт». Данные аккаунта и синхронизации удаляются немедленно, за исключением сведений, которые Исполнитель обязан хранить по налоговому законодательству;</li>
+        <li><strong>Отозвать согласие</strong> на обработку — эквивалентно удалению Аккаунта в части необязательной обработки;</li>
+        <li><strong>Ограничить обработку</strong> или возразить против неё (для пользователей ЕС);</li>
+        <li><strong>Перенести данные</strong> (право на переносимость, для пользователей ЕС) — в машиночитаемом формате JSON;</li>
+        <li><strong>Подать жалобу</strong> в Роскомнадзор (для субъектов из РФ) или в надзорный орган по защите данных своей страны (для субъектов из ЕС).</li>
+      </ol>
+
+      <h2 id="ru-cookies">8. Cookies и аналитика</h2>
+      <p>Приложение TaskFlow — десктоп-приложение и не использует браузерные cookies в привычном смысле. Веб-сайт <a href="https://yourtaskflow.app" target="_blank" rel="noopener">yourtaskflow.app</a> может использовать технически необходимые файлы для сохранения выбора языка (RU/EN) без сбора персональных данных. Сторонняя рекламная или маркетинговая аналитика на сайте и в приложении не используется. Если в будущем будет подключена агрегированная веб-аналитика, соответствующий раздел будет обновлён с описанием используемого сервиса и способов отказа.</p>
+
+      <h2 id="ru-thirdparty">9. Передача данных третьим лицам</h2>
+      <p>Мы привлекаем следующих субпроцессоров для оказания Услуг:</p>
+      <ul>
+        <li><strong>Supabase Inc.</strong> — облачная платформа (Postgres, аутентификация, realtime-синхронизация), выступает процессором персональных данных. Регион хранения — Frankfurt, Германия (eu-central-1);</li>
+        <li><strong>ЮKassa (НКО «ЮMoney»)</strong> — платёжный провайдер, выступает процессором данных о платежах и формирует чеки НПД через интеграцию с ФНС.</li>
+      </ul>
+      <p>Данные не передаются третьим лицам в рекламных или маркетинговых целях. Передача данных возможна также по законному требованию государственных органов.</p>
+
+      <h2 id="ru-intl">10. Международная передача данных</h2>
+      <p>Данные аккаунта и синхронизированные задачи обрабатываются в дата-центре Supabase, расположенном во Франкфурте-на-Майне, Германия (регион eu-central-1). Для пользователей из Российской Федерации это означает трансграничную передачу персональных данных за пределы РФ, которая осуществляется с учётом требований ст. 12 152-ФЗ. Для пользователей из ЕС/ЕЭЗ данные остаются в пределах Европейского союза, что соответствует требованиям GDPR по локализации.</p>
+
+      <h2 id="ru-gdpr">11. Соответствие 152-ФЗ и GDPR</h2>
+      <p>Сервисом могут пользоваться как граждане РФ, так и пользователи из Европейского союза. Мы стремимся соответствовать требованиям как Федерального закона № 152-ФЗ «О персональных данных», так и Общего регламента по защите данных (GDPR) там, где это применимо к пользователям из ЕС/ЕЭЗ, включая: правовые основания обработки, права субъектов данных, уведомление об утечках данных, соглашения с процессорами данных (DPA с Supabase и ЮKassa).</p>
+
+      <h2 id="ru-age">12. Возрастные ограничения</h2>
+      <div class="callout warn">
+        <p><strong>Сервис не предназначен для лиц младше 14 лет.</strong> Мы сознательно не собираем персональные данные пользователей младше 14 лет. Если вам стало известно, что несовершеннолетний младше 14 лет предоставил нам персональные данные, свяжитесь с нами по <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> — мы удалим такие данные.</p>
+      </div>
+
+      <h2 id="ru-contacts">13. Контакты</h2>
+      <p>По всем вопросам обработки персональных данных: <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. Резервный канал: <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
+
+      <h2 id="ru-changes">14. Изменения политики</h2>
+      <p>При существенных изменениях мы уведомим пользователей внутри приложения при следующем входе и опубликуем новую версию с указанием номера версии и даты вступления в силу на этой странице.</p>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ENGLISH -->
+    <section id="en">
+      <h1>Privacy Policy for TaskFlow</h1>
+      <p class="effective-date">Version 1.0 · Effective date: July 6, 2026</p>
+
+      <div class="toc">
+        <p>Contents</p>
+        <ol>
+          <li><a href="#en-who">Who we are</a></li>
+          <li><a href="#en-data">What data we collect</a></li>
+          <li><a href="#en-local-cloud">Local vs. cloud data</a></li>
+          <li><a href="#en-payments">Payment data (YooKassa)</a></li>
+          <li><a href="#en-basis">Legal basis for processing</a></li>
+          <li><a href="#en-retention">Data retention</a></li>
+          <li><a href="#en-rights">Data subject rights</a></li>
+          <li><a href="#en-cookies">Cookies and analytics</a></li>
+          <li><a href="#en-thirdparty">Third-party data sharing</a></li>
+          <li><a href="#en-intl">International data transfers</a></li>
+          <li><a href="#en-gdpr">Compliance with 152-FZ and GDPR</a></li>
+          <li><a href="#en-age">Age restrictions</a></li>
+          <li><a href="#en-contacts">Contacts</a></li>
+          <li><a href="#en-changes">Policy changes</a></li>
+        </ol>
+      </div>
+
+      <h2 id="en-who">1. Who we are</h2>
+      <p>TaskFlow is a personal task manager with cloud synchronization, developed by Daniil Lebedev (danny-swan). The local application is distributed under the <a href="https://github.com/danny-swan/taskflow-app/blob/main/LICENSE" target="_blank" rel="noopener">PolyForm Noncommercial 1.0.0</a> license; paid cloud features (sync, entitlements) are provided under the <a href="/legal/offer.html">Public Offer Agreement</a>.</p>
+      <p>We act as a personal data operator within the meaning of Federal Law No. 152-FZ "On Personal Data," and, with respect to users in the European Union and European Economic Area, as a data controller within the meaning of the General Data Protection Regulation (GDPR).</p>
+      <p><strong>Data Protection Officer (DPO) contact:</strong> <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. Fallback contact: <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
+
+      <h2 id="en-data">2. What data we collect</h2>
+
+      <h3>2.1. Account data</h3>
+      <ul>
+        <li><strong>Email</strong> — used for login, password recovery, and Subscription-related communication;</li>
+        <li><strong>Password hash</strong> — for email/password registration. The raw password is never stored, only an irreversible bcrypt hash;</li>
+        <li><strong>Registration and last-login dates</strong> — generated automatically;</li>
+        <li><strong>Subscription status and Plan</strong> — Free / Monthly / Annual / Lifetime, term, trial status;</li>
+        <li><strong>Device identifiers</strong> registered for synchronization.</li>
+      </ul>
+
+      <h3>2.2. Task synchronization data</h3>
+      <p>When cloud sync is enabled, the content of your tasks (titles, descriptions, tags, statuses, deadlines, task templates, overdue-task events) is transmitted to and stored in the Supabase cloud database to enable access from multiple devices. When sync is disabled, tasks are stored solely on your local device (see Section 3).</p>
+
+      <h3>2.3. Payment data</h3>
+      <p>See details in Section 4, "Payment data."</p>
+
+      <h3>2.4. Telemetry</h3>
+      <ul>
+        <li><strong>Event type:</strong> signup, login/logout, app start, task created/deleted/completed (without content), sync events (success/failure), payment events (initiated/completed/failed — without payment credentials);</li>
+        <li><strong>App version</strong> (e.g., 0.9.35);</li>
+        <li><strong>Operating system</strong> and its version;</li>
+        <li><strong>Event timestamp</strong>.</li>
+      </ul>
+
+      <h3>2.5. What we do NOT collect</h3>
+      <ul>
+        <li>Full card details — processed exclusively by YooKassa in accordance with the PCI DSS standard;</li>
+        <li>Plain-text passwords — only irreversible bcrypt hashes;</li>
+        <li>Task content when sync is disabled — data never leaves the device;</li>
+        <li>Advertising or marketing analytics;</li>
+        <li>Data shared with third parties for commercial purposes unrelated to the provision of Services.</li>
+      </ul>
+
+      <h2 id="en-local-cloud">3. Local vs. cloud data</h2>
+      <table>
+        <thead><tr><th>Data type</th><th>Where it's stored</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Local data (tasks, tags, settings when sync is off)</td><td>SQLite file on the user's device</td><td>Fully under the user's control; not automatically encrypted by the app — we recommend OS-level disk encryption (BitLocker/FileVault)</td></tr>
+          <tr><td>Synced tasks, statuses, tags, templates, overdue events</td><td>Supabase Postgres, Frankfurt region (eu-central-1)</td><td>Transmitted over TLS; access restricted via Row-Level Security (RLS) — each user sees only their own rows</td></tr>
+          <tr><td>Account and Subscription data</td><td>Supabase Postgres, Frankfurt region (eu-central-1)</td><td>Includes entitlement status for paid features</td></tr>
+        </tbody>
+      </table>
+      <p>We recommend not relying solely on local storage for important data without a backup — enabling sync creates a cloud copy of your tasks.</p>
+
+      <h2 id="en-payments">4. Payment data (YooKassa)</h2>
+      <p>We use the payment provider NKO YuMoney LLC (YooKassa service, yookassa.ru) to process payments. When a Subscription is purchased, the following data exchange occurs:</p>
+      <h3>4.1. What we send to YooKassa at checkout</h3>
+      <ul>
+        <li>Account email (for generating the receipt and payment notifications);</li>
+        <li>Payment amount and currency;</li>
+        <li>Selected Plan identifier;</li>
+        <li>A receipt object for registration with the Federal Tax Service under the Professional Income Tax regime — including line items, amount, and the Provider's self-employed status.</li>
+      </ul>
+      <h3>4.2. What we receive back from YooKassa</h3>
+      <ul>
+        <li><strong>Payment ID (payment_id)</strong> — used for reconciliation and Subscription activation;</li>
+        <li><strong>Payment status</strong> (succeeded / declined / refunded);</li>
+        <li><strong>NPD receipt data</strong> — a link to the fiscal receipt registered via the "Moy Nalog" application;</li>
+        <li>Masked payment method details (e.g., last 4 card digits) — solely to display payment history to the user, without the ability to use them for further charges without explicit consent.</li>
+      </ul>
+      <p>Full card details (card number, CVC) are never transmitted to us and never pass through our infrastructure — card data entry occurs directly on YooKassa's secure page.</p>
+
+      <h2 id="en-basis">5. Legal basis for processing (152-FZ)</h2>
+      <ul>
+        <li><strong>Performance of a contract</strong> (Art. 6 of 152-FZ, Art. 6(1)(b) GDPR) — processing of account, sync, and payment data is necessary to provide the Services under the <a href="/legal/offer.html">Offer</a>;</li>
+        <li><strong>Consent of the data subject</strong> — for telemetry and optional analytics;</li>
+        <li><strong>Legitimate interest of the operator</strong> (Art. 6(1)(f) GDPR) — Service security, fraud prevention, product improvement;</li>
+        <li><strong>Compliance with legal obligations</strong> — generation and retention of NPD receipts under Federal Law No. 422-FZ.</li>
+      </ul>
+
+      <h2 id="en-retention">6. Data retention</h2>
+      <ul>
+        <li>Account and sync data — for as long as the Account exists;</li>
+        <li>After Account deletion — data is deleted immediately; Supabase server logs within 30 days;</li>
+        <li>Payment data and NPD receipts — retained for the periods required under Russian tax law (typically no less than 4 years), even after Account deletion, to fulfill the Provider's legal obligations;</li>
+        <li>Telemetry — up to 12 months, in aggregated form.</li>
+      </ul>
+
+      <h2 id="en-rights">7. Data subject rights</h2>
+      <p>Under 152-FZ and (for EU users) the GDPR, you have the right to:</p>
+      <ol>
+        <li><strong>Obtain a copy of your data</strong> — request via <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> or an issue labeled <code>data-request</code> on <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>; export provided within 30 days;</li>
+        <li><strong>Correct inaccurate data</strong>;</li>
+        <li><strong>Delete your Account</strong> — Settings → Account → "Delete account." Account and sync data are deleted immediately, except information the Provider is legally required to retain under tax law;</li>
+        <li><strong>Withdraw consent</strong> to processing — equivalent to deleting the Account for optional processing purposes;</li>
+        <li><strong>Restrict processing</strong> or object to it (EU users);</li>
+        <li><strong>Data portability</strong> (EU users) — in a machine-readable JSON format;</li>
+        <li><strong>Lodge a complaint</strong> with Roskomnadzor (Russian data subjects) or your national data protection authority (EU data subjects).</li>
+      </ol>
+
+      <h2 id="en-cookies">8. Cookies and analytics</h2>
+      <p>TaskFlow is a desktop application and does not use browser cookies in the conventional sense. The website <a href="https://yourtaskflow.app" target="_blank" rel="noopener">yourtaskflow.app</a> may use technically necessary storage to remember your language preference (RU/EN) without collecting personal data. No third-party advertising or marketing analytics is used on the website or in the app. If aggregated web analytics is introduced in the future, this section will be updated to describe the service used and opt-out options.</p>
+
+      <h2 id="en-thirdparty">9. Third-party data sharing</h2>
+      <p>We engage the following subprocessors to provide the Services:</p>
+      <ul>
+        <li><strong>Supabase Inc.</strong> — cloud platform (Postgres, authentication, realtime sync), acting as a personal data processor. Data storage region: Frankfurt, Germany (eu-central-1);</li>
+        <li><strong>YooKassa (NKO YuMoney)</strong> — payment provider, acting as processor of payment data and issuing NPD receipts via integration with the Federal Tax Service.</li>
+      </ul>
+      <p>Data is not shared with third parties for advertising or marketing purposes. Data may also be disclosed pursuant to a lawful request from government authorities.</p>
+
+      <h2 id="en-intl">10. International data transfers</h2>
+      <p>Account data and synced tasks are processed in a Supabase data center located in Frankfurt am Main, Germany (eu-central-1 region). For users in the Russian Federation, this constitutes a cross-border transfer of personal data outside Russia, carried out in accordance with the requirements of Art. 12 of 152-FZ. For EU/EEA users, data remains within the European Union, consistent with GDPR data localization requirements.</p>
+
+      <h2 id="en-gdpr">11. Compliance with 152-FZ and GDPR</h2>
+      <p>The Service may be used by both Russian citizens and users from the European Union. We aim to comply with both Federal Law No. 152-FZ "On Personal Data" and the General Data Protection Regulation (GDPR) where applicable to EU/EEA users, including: legal bases for processing, data subject rights, data breach notification, and data processing agreements with subprocessors (DPAs with Supabase and YooKassa).</p>
+
+      <h2 id="en-age">12. Age restrictions</h2>
+      <div class="callout warn">
+        <p><strong>The Service is not intended for individuals under 14 years of age.</strong> We do not knowingly collect personal data from users under 14. If you become aware that a minor under 14 has provided us with personal data, please contact us at <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> and we will delete such data.</p>
+      </div>
+
+      <h2 id="en-contacts">13. Contacts</h2>
+      <p>For any questions about personal data processing: <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. Fallback channel: <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
+
+      <h2 id="en-changes">14. Policy changes</h2>
+      <p>For material changes, we will notify users in-app at their next login and publish a new version with the version number and effective date on this page.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>© 2026 TaskFlow · Версия документа 1.0</div>
+    <div class="footer-links">
+      <a href="https://yourtaskflow.app">yourtaskflow.app</a>
+      <a href="/legal/offer.html">Оферта</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/legal/return.html">Возврат</a>
+      <a href="/legal/terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  if (window.scrollY > 8) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+const langLinks = document.querySelectorAll('.lang-switch a');
+const setActive = (hash) => {
+  langLinks.forEach(a => {
+    if (a.getAttribute('href') === hash) a.classList.add('active');
+    else a.classList.remove('active');
+  });
+};
+langLinks.forEach(a => a.addEventListener('click', (e) => setActive(a.getAttribute('href'))));
+if (window.location.hash === '#en') setActive('#en');
+</script>
+
+</body>
+</html>
