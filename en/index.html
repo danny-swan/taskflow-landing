@@ -487,6 +487,146 @@ h1, h2, h3 {
   font-family: 'Manrope', sans-serif;
 }
 
+/* --- Pricing --- */
+.pricing {
+  padding: 96px 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 880px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
+}
+.plan {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.plan:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  transform: translateY(-2px);
+}
+.plan.plan-highlight {
+  border-color: var(--primary);
+  box-shadow: 0 12px 40px -18px rgba(15, 122, 128, 0.30);
+}
+.plan-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.plan-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+.plan-tagline {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 20px;
+  min-height: 40px;
+}
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0 0 4px;
+}
+.plan-price-amount {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.plan-price-period {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.plan-price-note {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0 0 24px;
+  min-height: 18px;
+}
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  flex: 1;
+}
+.plan-features li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.plan-features li::before {
+  content: '';
+  flex: 0 0 16px;
+  height: 16px;
+  margin-top: 3px;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F7A80' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+}
+.plan-cta {
+  display: block;
+  text-align: center;
+  background: var(--primary);
+  color: var(--on-primary) !important;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.plan-cta:hover { background: var(--primary-hover); color: var(--on-primary) !important; }
+.plan-cta.plan-cta-outline {
+  background: transparent;
+  color: var(--primary) !important;
+  border: 1px solid var(--border);
+}
+.plan-cta.plan-cta-outline:hover {
+  background: var(--accent-soft);
+  color: var(--primary) !important;
+}
+.pricing-note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 40px auto 0;
+  max-width: 640px;
+  line-height: 1.6;
+}
+.pricing-note a { color: var(--primary); }
+
 /* --- CTA --- */
 .cta {
   padding: 96px 0;
@@ -695,6 +835,7 @@ h1, h2, h3 {
     <div class="nav-links">
       <a href="#features" class="nav-link-item">Features</a>
       <a href="#how" class="nav-link-item">Get started</a>
+      <a href="#pricing" class="nav-link-item">Pricing</a>
       <a href="#support" class="nav-link-item">Support</a>
       <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener" class="nav-link-item">GitHub</a>
 
@@ -859,6 +1000,75 @@ h1, h2, h3 {
       <span class="tech-chip">Vitest</span>
       <span class="tech-chip">GitHub Actions</span>
     </div>
+  </div>
+</section>
+
+<!-- v0.9.35-dev.6.4: pricing tiers with checkout buttons -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>TaskFlow Pro pricing</h2>
+      <p>Payments via YooKassa. 7-day refund window per the Russian Consumer Protection Law.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="plan reveal">
+        <h3 class="plan-name">Monthly</h3>
+        <p class="plan-tagline">Flexible option — cancel anytime</p>
+        <div class="plan-price">
+          <span class="plan-price-amount">299 ₽</span>
+          <span class="plan-price-period">/ month</span>
+        </div>
+        <p class="plan-price-note">Renews every 30 days</p>
+        <ul class="plan-features">
+          <li>Full access to all features</li>
+          <li>Cloud sync across devices</li>
+          <li>Priority support</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a href="taskflow://checkout?tier=monthly" class="plan-cta plan-cta-outline" data-tier="monthly">Get started</a>
+      </div>
+
+      <div class="plan plan-highlight reveal">
+        <div class="plan-badge">Best value</div>
+        <h3 class="plan-name">Annual</h3>
+        <p class="plan-tagline">Save 17% — pay less, work more</p>
+        <div class="plan-price">
+          <span class="plan-price-amount">2 990 ₽</span>
+          <span class="plan-price-period">/ year</span>
+        </div>
+        <p class="plan-price-note">≈ 249 ₽ per month</p>
+        <ul class="plan-features">
+          <li>Everything in Monthly</li>
+          <li>Save 598 ₽ per year</li>
+          <li>Early access to beta features</li>
+          <li>One payment for 12 months</li>
+        </ul>
+        <a href="taskflow://checkout?tier=annual" class="plan-cta" data-tier="annual">Get started</a>
+      </div>
+
+      <div class="plan reveal">
+        <h3 class="plan-name">Lifetime</h3>
+        <p class="plan-tagline">Pay once — use forever</p>
+        <div class="plan-price">
+          <span class="plan-price-amount">4 990 ₽</span>
+          <span class="plan-price-period">one-time</span>
+        </div>
+        <p class="plan-price-note">All future TaskFlow Pro updates</p>
+        <ul class="plan-features">
+          <li>Everything in Annual</li>
+          <li>Early access to beta features</li>
+          <li>Lifetime Pro access</li>
+          <li>All future updates</li>
+        </ul>
+        <a href="taskflow://checkout?tier=lifetime" class="plan-cta plan-cta-outline" data-tier="lifetime">Get started</a>
+      </div>
+
+    </div>
+    <p class="pricing-note">
+      Clicking “Get started” opens TaskFlow on your computer. Haven’t installed it yet? <a href="#cta-download">Download for free</a> and subscribe from inside the app.<br>
+      By paying you agree to the <a href="/legal/offer.html">public offer</a> and <a href="/legal/privacy.html">privacy policy</a>.
+    </p>
   </div>
 </section>
 
