@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Оплата прошла — TaskFlow</title>
+<meta name="description" content="Оплата подписки TaskFlow успешно принята. Вернитесь в приложение, чтобы продолжить работу.">
+<meta name="theme-color" content="#FBFAF6">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #FBFAF6;
+  --surface: #FFFFFF;
+  --border: #E4E1D8;
+  --text: #2A2721;
+  --text-muted: #6E6C67;
+  --primary: #0F7A80;
+  --primary-hover: #0A5C61;
+  --success: #437A22;
+  --success-bg: rgba(67, 122, 34, 0.08);
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 480px;
+  width: 100%;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 12px 40px -14px rgba(40, 37, 29, 0.10);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--success-bg);
+  color: var(--success);
+  margin: 0 auto 20px;
+}
+.badge svg { width: 32px; height: 32px; }
+h1 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.subtitle {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 0 0 24px;
+}
+.tier-info {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.tier-info strong { color: var(--text); font-weight: 600; }
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+.btn:hover { background: var(--primary-hover); }
+.btn-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  margin-top: 8px;
+}
+.btn-secondary:hover { background: var(--bg); color: var(--text); }
+.footnote {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.footnote a { color: var(--primary); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </div>
+  <h1>Оплата прошла успешно</h1>
+  <p class="subtitle">Спасибо за поддержку TaskFlow. Подписка активируется автоматически в течение минуты.</p>
+
+  <div class="tier-info" id="tier-info">
+    Ваш тариф: <strong id="tier-name">определяется…</strong>
+  </div>
+
+  <a href="taskflow://pay/success" class="btn" id="return-btn">
+    Вернуться в приложение
+  </a>
+  <br>
+  <a href="/" class="btn btn-secondary">На главную</a>
+
+  <div class="footnote">
+    Чек об оплате придёт на ваш email в течение нескольких минут (ЮKassa зарегистрирует его в ФНС).<br>
+    Вопросы? <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>
+  </div>
+</div>
+
+<script>
+// Показываем название тарифа из query-параметра ?tier=monthly|annual|lifetime.
+const tierNames = {
+  monthly: 'Ежемесячно (299 ₽/мес)',
+  annual: 'Ежегодно (2 990 ₽/год)',
+  lifetime: 'Пожизненно (4 990 ₽)',
+};
+const params = new URLSearchParams(location.search);
+const tier = params.get('tier');
+const nameEl = document.getElementById('tier-name');
+const infoEl = document.getElementById('tier-info');
+const returnBtn = document.getElementById('return-btn');
+if (tier && tierNames[tier]) {
+  nameEl.textContent = tierNames[tier];
+  returnBtn.href = 'taskflow://pay/success?tier=' + encodeURIComponent(tier);
+} else {
+  infoEl.style.display = 'none';
+}
+
+// Автоматически попробуем открыть приложение через deep-link через 1.5 секунды.
+// Если TaskFlow установлен — Windows/macOS сами перехватят taskflow:// и откроют.
+setTimeout(() => {
+  window.location.href = returnBtn.href;
+}, 1500);
+</script>
+</body>
+</html>
