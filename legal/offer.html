@@ -36,7 +36,7 @@
     <!-- RUSSIAN -->
     <section id="ru">
       <h1>Публичная оферта на оказание услуг</h1>
-      <p class="effective-date">Версия 1.0 · Дата вступления в силу: 06.07.2026</p>
+      <p class="effective-date">Версия 1.1 · Дата вступления в силу: 07.07.2026</p>
 
       <div class="toc">
         <p>Содержание</p>
@@ -46,6 +46,8 @@
           <li><a href="#ru-subject">Предмет договора</a></li>
           <li><a href="#ru-conclusion">Порядок заключения договора</a></li>
           <li><a href="#ru-price">Стоимость и порядок оплаты</a></li>
+          <li><a href="#ru-recurring">Автопродление и рекуррентные платежи</a></li>
+          <li><a href="#ru-cancel">Отмена автопродления и обновление способа оплаты</a></li>
           <li><a href="#ru-provision">Порядок предоставления услуг</a></li>
           <li><a href="#ru-rights">Права и обязанности сторон</a></li>
           <li><a href="#ru-liability">Ответственность</a></li>
@@ -93,6 +95,7 @@
       <p>Новым Пользователям предоставляется пробный период (Trial) длительностью <strong>14 дней</strong> с доступом к платной функциональности без оплаты. По истечении пробного периода для продолжения использования облачной функциональности требуется оформление платной Подписки.</p>
 
       <h2 id="ru-price">5. Стоимость и порядок оплаты</h2>
+      <!-- v1.1: recurring payments вынесены в отдельный раздел 6, cancellation & update-card — в раздел 7 -->
       <table>
         <thead>
           <tr><th>Тариф</th><th>Стоимость</th><th>Период</th><th>Тип платежа</th></tr>
@@ -105,62 +108,77 @@
         </tbody>
       </table>
       <p>5.1. Оплата производится в российских рублях через платёжного провайдера ЮKassa. Исполнитель не хранит и не обрабатывает полные реквизиты банковских карт Пользователя — обработка платёжных данных осуществляется ЮKassa в соответствии со стандартом PCI DSS.</p>
-      <p>5.2. Для Тарифов Monthly и Annual устанавливается <strong>автоматическое продление</strong> Подписки по истечении оплаченного периода с списанием стоимости очередного периода с привязанного способа оплаты, если Пользователь не отменил автопродление до даты списания.</p>
+      <p>5.2. Для Тарифов Monthly и Annual устанавливается <strong>автоматическое продление</strong> Подписки по истечении оплаченного периода с списанием стоимости очередного периода с привязанного способа оплаты, если Пользователь не отменил автопродление до даты списания. Подробные условия автопродления, отмены автопродления и обновления способа оплаты изложены в разделах 6 и 7 настоящей оферты.</p>
       <p>5.3. Тариф Lifetime предполагает <strong>разовый платёж</strong>, предоставляющий бессрочный доступ к платной функциональности Сервиса без последующих списаний.</p>
       <p>5.4. Исполнитель вправе изменять стоимость Тарифов в одностороннем порядке. <strong>Изменения цены применяются к новым подпискам и продлевающимся подпискам</strong> (то есть к очередному циклу оплаты), но не влияют на уже оплаченный текущий период действующей Подписки.</p>
       <p>5.5. Все чеки формируются в соответствии с требованиями Федерального закона от 27.11.2018 № 422-ФЗ «О проведении эксперимента по установлению специального налогового режима «Налог на профессиональный доход»» через приложение «Мой налог» и передаются Пользователю через сервис ЮKassa на адрес электронной почты, указанный при оплате.</p>
 
-      <h2 id="ru-provision">6. Порядок предоставления услуг</h2>
-      <p>6.1. Доступ к оплаченной функциональности Сервиса активируется автоматически после получения Исполнителем подтверждения об успешном платеже от ЮKassa, как правило — в течение нескольких минут.</p>
-      <p>6.2. В случае технических сбоев, задерживающих активацию доступа более чем на 24 часа с момента подтверждения оплаты, Пользователь вправе обратиться в поддержку по адресу <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> либо через <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
-      <p>6.3. Услуги оказываются дистанционно, без подписания двустороннего документа на бумажном носителе.</p>
+      <h2 id="ru-recurring">6. Автопродление и рекуррентные платежи</h2>
+      <p>6.1. Тарифы <strong>Monthly</strong> и <strong>Annual</strong> оформляются с автоматическим продлением по модели <strong>рекуррентных платежей</strong>. При первой оплате ЮKassa сохраняет привязанный способ оплаты Пользователя (номер и срок карты хранятся у ЮKassa в соответствии со стандартом PCI DSS; Исполнитель их не получает и не хранит) и присваивает ему идентификатор, используемый для последующих списаний.</p>
+      <p>6.2. Следующее списание производится автоматически <strong>в день окончания оплаченного периода</strong> в размере стоимости очередного периода по действующему на момент списания Тарифу. О предстоящем списании Пользователю направляется уведомление на адрес электронной почты Аккаунта <strong>не позднее чем за 3 (три) календарных дня</strong> до даты списания.</p>
+      <p>6.3. При успешном списании Подписка продлевается на очередной период (месяц или год), Пользователю направляется чек по НПД через ЮKassa и уведомление об успешном продлении.</p>
+      <p>6.4. При неудачном списании (недостаточно средств, отклонение банком-эмитентом, срок действия карты истёк и иные причины) Исполнитель предпринимает до <strong>3 (трёх) повторных попыток</strong> списания в течение <strong>3 календарных дней</strong> (по одной попытке в сутки), с уведомлением Пользователя на email после каждой неудачной попытки. Если все попытки завершились неудачей, Подписка автоматически переводится на тариф Free, доступ к платной функциональности прекращается до момента возобновления оплаты Пользователем.</p>
+      <p>6.5. Пользователь вправе в любой момент возобновить Подписку, оформив новый платёж через раздел «Подписка» в настройках Сервиса.</p>
 
-      <h2 id="ru-rights">7. Права и обязанности сторон</h2>
-      <h3>7.1. Исполнитель обязуется:</h3>
+      <h2 id="ru-cancel">7. Отмена автопродления и обновление способа оплаты</h2>
+      <p>7.1. Пользователь вправе <strong>в любой момент отменить автопродление</strong> Подписки в разделе <strong>«Настройки → Подписка»</strong> Сервиса нажатием кнопки «Отменить автопродление». Отмена не требует обращения в поддержку и вступает в силу немедленно после подтверждения действия Пользователем.</p>
+      <p>7.2. При отмене автопродления Пользователь <strong>сохраняет доступ к оплаченной функциональности до окончания уже оплаченного периода</strong>. По истечении этого периода Подписка автоматически переводится на тариф Free без дополнительного списания.</p>
+      <p>7.3. До даты окончания оплаченного периода Пользователь может <strong>восстановить автопродление</strong> в том же разделе настроек. Восстановление возобновляет автоматические списания начиная со следующего цикла.</p>
+      <p>7.4. Для <strong>обновления способа оплаты</strong> (замены привязанной карты) Пользователь совершает через раздел «Настройки → Подписка» пробный платёж на сумму <strong>1 (один) рубль</strong> с новой карты. Указанная сумма используется исключительно для сохранения нового способа оплаты у ЮKassa и <strong>автоматически возвращается Пользователю в течение нескольких минут</strong> после успешного списания. Возврат осуществляется на ту же карту, с которой производился пробный платёж. Комиссия платёжной системы при обновлении способа оплаты Пользователем не оплачивается.</p>
+      <p>7.5. Данные ранее привязанной карты после успешного обновления способа оплаты автоматически удаляются из системы Исполнителя и ЮKassa. Дальнейшие списания производятся с новой карты.</p>
+
+      <h2 id="ru-provision">8. Порядок предоставления услуг</h2>
+      <p>8.1. Доступ к оплаченной функциональности Сервиса активируется автоматически после получения Исполнителем подтверждения об успешном платеже от ЮKassa, как правило — в течение нескольких минут.</p>
+      <p>8.2. В случае технических сбоев, задерживающих активацию доступа более чем на 24 часа с момента подтверждения оплаты, Пользователь вправе обратиться в поддержку по адресу <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> либо через <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
+      <p>8.3. Услуги оказываются дистанционно, без подписания двустороннего документа на бумажном носителе.</p>
+
+      <h2 id="ru-rights">9. Права и обязанности сторон</h2>
+      <h3>9.1. Исполнитель обязуется:</h3>
       <ul>
         <li>предоставить Пользователю доступ к функциональности Сервиса в соответствии с оплаченным Тарифом;</li>
-        <li>обеспечивать разумные меры по бесперебойной работе Сервиса, но не гарантирует его абсолютную бесперебойность (см. раздел 8);</li>
-        <li>уведомлять об изменениях условий оферты в порядке, предусмотренном разделом 12.</li>
+        <li>обеспечивать разумные меры по бесперебойной работе Сервиса, но не гарантирует его абсолютную бесперебойность (см. раздел 10);</li>
+        <li>уведомлять об изменениях условий оферты в порядке, предусмотренном разделом 14;</li>
+        <li>уведомлять Пользователя о предстоящем автопродлении Подписки и об исходе автоматического списания в соответствии с разделом 6.</li>
       </ul>
-      <h3>7.2. Исполнитель вправе:</h3>
+      <h3>9.2. Исполнитель вправе:</h3>
       <ul>
         <li>изменять функциональность Сервиса в рамках тарифа без предварительного уведомления;</li>
         <li>приостанавливать или блокировать доступ Пользователя к Сервису при нарушении условий настоящей оферты или <a href="/legal/terms.html">Пользовательского соглашения</a>;</li>
         <li>привлекать третьих лиц (субпроцессоров) для оказания Услуг, включая платёжного провайдера ЮKassa и облачного провайдера Supabase.</li>
       </ul>
-      <h3>7.3. Пользователь обязуется:</h3>
+      <h3>9.3. Пользователь обязуется:</h3>
       <ul>
         <li>предоставлять достоверные данные при регистрации;</li>
         <li>своевременно оплачивать выбранный Тариф;</li>
         <li>не совершать действий, направленных на обход технических ограничений Сервиса, включая проверки прав доступа (entitlement checks).</li>
       </ul>
 
-      <h2 id="ru-liability">8. Ответственность</h2>
-      <p>8.1. Исполнитель не несёт ответственности за перерывы в оказании Услуг, вызванные обстоятельствами, находящимися вне его разумного контроля, включая сбои на стороне третьих лиц (ЮKassa, Supabase, интернет-провайдеры).</p>
-      <p>8.2. <strong>Совокупная ответственность Исполнителя перед Пользователем по любым требованиям, связанным с настоящей офертой, ограничена суммой последнего произведённого Пользователем платежа.</strong></p>
-      <p>8.3. Исполнитель не несёт ответственности за утрату данных, произошедшую по вине Пользователя (в том числе при удалении локальной базы данных без предварительной синхронизации).</p>
+      <h2 id="ru-liability">10. Ответственность</h2>
+      <p>10.1. Исполнитель не несёт ответственности за перерывы в оказании Услуг, вызванные обстоятельствами, находящимися вне его разумного контроля, включая сбои на стороне третьих лиц (ЮKassa, Supabase, интернет-провайдеры).</p>
+      <p>10.2. <strong>Совокупная ответственность Исполнителя перед Пользователем по любым требованиям, связанным с настоящей офертой, ограничена суммой последнего произведённого Пользователем платежа.</strong></p>
+      <p>10.3. Исполнитель не несёт ответственности за утрату данных, произошедшую по вине Пользователя (в том числе при удалении локальной базы данных без предварительной синхронизации).</p>
 
-      <h2 id="ru-pd">9. Персональные данные</h2>
+      <h2 id="ru-pd">11. Персональные данные</h2>
       <p>Обработка персональных данных Пользователя осуществляется в соответствии с <a href="/legal/privacy.html">Политикой конфиденциальности</a>, являющейся неотъемлемой частью настоящей оферты.</p>
 
-      <h2 id="ru-refund">10. Порядок возврата</h2>
+      <h2 id="ru-refund">12. Порядок возврата</h2>
       <p>Возврат денежных средств осуществляется в соответствии с <a href="/legal/return.html">Политикой возврата средств</a>, являющейся неотъемлемой частью настоящей оферты.</p>
 
-      <h2 id="ru-force">11. Форс-мажор</h2>
+      <h2 id="ru-force">13. Форс-мажор</h2>
       <p>Стороны освобождаются от ответственности за полное или частичное неисполнение обязательств по настоящей оферте, если оно явилось следствием обстоятельств непреодолимой силы (форс-мажор), включая, но не ограничиваясь: стихийные бедствия, военные действия, акты органов государственной власти, сбои в работе интернет-инфраструктуры, аварии на стороне третьих лиц (платёжных систем, хостинг-провайдеров, облачных сервисов), возникшие после заключения договора и которые стороны не могли предвидеть или предотвратить разумными мерами.</p>
 
-      <h2 id="ru-changes">12. Изменение условий оферты</h2>
-      <p>12.1. Исполнитель вправе в одностороннем порядке вносить изменения в настоящую оферту.</p>
-      <p>12.2. Новая версия оферты публикуется по адресу <a href="https://yourtaskflow.app/legal/offer.html">yourtaskflow.app/legal/offer.html</a> с указанием номера версии и даты вступления в силу.</p>
-      <p>12.3. <strong>Платежи, совершённые до вступления в силу новой версии оферты, регулируются версией оферты, действовавшей на момент совершения такого платежа.</strong> Изменения не имеют обратной силы в отношении уже оплаченных периодов.</p>
-      <p>12.4. Продолжение использования Сервиса после публикации новой версии оферты означает согласие Пользователя с изменёнными условиями в отношении последующих платежей.</p>
+      <h2 id="ru-changes">14. Изменение условий оферты</h2>
+      <p>14.1. Исполнитель вправе в одностороннем порядке вносить изменения в настоящую оферту.</p>
+      <p>14.2. Новая версия оферты публикуется по адресу <a href="https://yourtaskflow.app/legal/offer.html">yourtaskflow.app/legal/offer.html</a> с указанием номера версии и даты вступления в силу.</p>
+      <p>14.3. <strong>Платежи, совершённые до вступления в силу новой версии оферты, регулируются версией оферты, действовавшей на момент совершения такого платежа.</strong> Изменения не имеют обратной силы в отношении уже оплаченных периодов.</p>
+      <p>14.4. Продолжение использования Сервиса после публикации новой версии оферты означает согласие Пользователя с изменёнными условиями в отношении последующих платежей.</p>
 
-      <h2 id="ru-disputes">13. Разрешение споров</h2>
-      <p>13.1. Все споры и разногласия, возникающие из настоящей оферты, разрешаются путём переговоров.</p>
-      <p>13.2. <strong>Претензионный порядок обязателен.</strong> Претензия направляется в письменном виде на адрес <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. Срок рассмотрения претензии — 30 (тридцать) календарных дней с момента её получения.</p>
-      <p>13.3. В случае невозможности урегулирования спора в претензионном порядке в течение указанного срока спор подлежит рассмотрению в суде по месту регистрации Исполнителя в соответствии с действующим законодательством Российской Федерации.</p>
+      <h2 id="ru-disputes">15. Разрешение споров</h2>
+      <p>15.1. Все споры и разногласия, возникающие из настоящей оферты, разрешаются путём переговоров.</p>
+      <p>15.2. <strong>Претензионный порядок обязателен.</strong> Претензия направляется в письменном виде на адрес <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. Срок рассмотрения претензии — 30 (тридцать) календарных дней с момента её получения.</p>
+      <p>15.3. В случае невозможности урегулирования спора в претензионном порядке в течение указанного срока спор подлежит рассмотрению в суде по месту регистрации Исполнителя в соответствии с действующим законодательством Российской Федерации.</p>
 
-      <h2 id="ru-requisites">14. Реквизиты Исполнителя</h2>
+      <h2 id="ru-requisites">16. Реквизиты Исполнителя</h2>
       <div class="callout">
         <p><strong>ФИО:</strong> Лебедев Даниил (публичное имя: danny-swan)</p>
         <p><strong>Статус:</strong> плательщик налога на профессиональный доход (самозанятый), в соответствии с Федеральным законом от 27.11.2018 № 422-ФЗ</p>
@@ -176,7 +194,7 @@
     <!-- ENGLISH -->
     <section id="en">
       <h1>Public Offer Agreement for Services</h1>
-      <p class="effective-date">Version 1.0 · Effective date: July 6, 2026</p>
+      <p class="effective-date">Version 1.1 · Effective date: July 7, 2026</p>
 
       <div class="toc">
         <p>Contents</p>
@@ -186,6 +204,8 @@
           <li><a href="#en-subject">Subject of the Agreement</a></li>
           <li><a href="#en-conclusion">Conclusion of the Agreement</a></li>
           <li><a href="#en-price">Pricing and Payment</a></li>
+          <li><a href="#en-recurring">Auto-renewal and Recurring Payments</a></li>
+          <li><a href="#en-cancel">Cancelling Auto-renewal and Updating Payment Method</a></li>
           <li><a href="#en-provision">Provision of Services</a></li>
           <li><a href="#en-rights">Rights and Obligations of the Parties</a></li>
           <li><a href="#en-liability">Liability</a></li>
@@ -245,62 +265,77 @@
         </tbody>
       </table>
       <p>5.1. Payment is made in Russian rubles through the payment provider YooKassa. The Provider does not store or process the User's full card details — payment data processing is performed by YooKassa in accordance with the PCI DSS standard.</p>
-      <p>5.2. The Monthly and Annual Plans are subject to <strong>automatic renewal</strong> of the Subscription upon expiry of the paid period, with the cost of the next period charged to the linked payment method, unless the User cancels auto-renewal before the charge date.</p>
+      <p>5.2. The Monthly and Annual Plans are subject to <strong>automatic renewal</strong> of the Subscription upon expiry of the paid period, with the cost of the next period charged to the linked payment method, unless the User cancels auto-renewal before the charge date. Detailed terms of auto-renewal, cancellation of auto-renewal, and payment method updates are set out in Sections 6 and 7 of this offer.</p>
       <p>5.3. The Lifetime Plan involves a <strong>one-time payment</strong> providing unlimited access to paid Service functionality with no subsequent charges.</p>
       <p>5.4. The Provider may unilaterally change Plan pricing. <strong>Price changes apply to new subscriptions and renewing subscriptions</strong> (i.e., to the next billing cycle), but do not affect the already-paid current period of an active Subscription.</p>
       <p>5.5. All receipts are issued in accordance with Federal Law No. 422-FZ dated November 27, 2018, "On Conducting an Experiment to Establish the Special Tax Regime 'Professional Income Tax'" via the "Moy Nalog" application, and delivered to the User via YooKassa to the email address provided at checkout.</p>
 
-      <h2 id="en-provision">6. Provision of Services</h2>
-      <p>6.1. Access to paid Service functionality is activated automatically upon the Provider's receipt of payment confirmation from YooKassa, typically within a few minutes.</p>
-      <p>6.2. In the event of technical failures delaying activation by more than 24 hours after payment confirmation, the User may contact support at <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> or via <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
-      <p>6.3. Services are provided remotely, without a bilateral paper document being signed.</p>
+      <h2 id="en-recurring">6. Auto-renewal and Recurring Payments</h2>
+      <p>6.1. The <strong>Monthly</strong> and <strong>Annual</strong> Plans are billed with automatic renewal under a <strong>recurring payment</strong> model. On the first payment, YooKassa saves the User's linked payment method (card number and expiry date are stored by YooKassa in accordance with the PCI DSS standard; the Provider does not receive or store this data) and assigns it an identifier used for subsequent charges.</p>
+      <p>6.2. The next charge is made automatically <strong>on the day the paid period ends</strong>, in the amount of the price of the next period at the Plan rate in force at the time of the charge. The User is notified of the upcoming charge to the email address on file with the Account <strong>no later than 3 (three) calendar days</strong> before the charge date.</p>
+      <p>6.3. Upon a successful charge, the Subscription is extended for the next period (month or year), and the User is sent an NPD receipt via YooKassa together with a renewal-success notification.</p>
+      <p>6.4. If the charge fails (insufficient funds, decline by the issuing bank, expired card, or other reasons), the Provider makes up to <strong>3 (three) retry attempts</strong> over <strong>3 calendar days</strong> (one attempt per day), notifying the User by email after each failed attempt. If all attempts fail, the Subscription is automatically switched to the Free Plan, and access to paid functionality ceases until the User resumes payment.</p>
+      <p>6.5. The User may at any time resume the Subscription by making a new payment through the "Subscription" section in the Service settings.</p>
 
-      <h2 id="en-rights">7. Rights and Obligations of the Parties</h2>
-      <h3>7.1. The Provider undertakes to:</h3>
+      <h2 id="en-cancel">7. Cancelling Auto-renewal and Updating Payment Method</h2>
+      <p>7.1. The User may <strong>cancel auto-renewal of the Subscription at any time</strong> in the <strong>"Settings → Subscription"</strong> section of the Service by clicking the "Cancel auto-renewal" button. Cancellation does not require contacting support and takes effect immediately upon User confirmation.</p>
+      <p>7.2. Upon cancelling auto-renewal, the User <strong>retains access to paid functionality until the end of the already-paid period</strong>. After that period ends, the Subscription is automatically switched to the Free Plan with no further charge.</p>
+      <p>7.3. Before the end of the paid period, the User may <strong>reactivate auto-renewal</strong> in the same settings section. Reactivation resumes automatic charges starting from the next billing cycle.</p>
+      <p>7.4. To <strong>update the payment method</strong> (replace the linked card), the User makes a test payment of <strong>1 (one) ruble</strong> from the new card via the "Settings → Subscription" section. This amount is used solely to save the new payment method with YooKassa and is <strong>automatically refunded to the User within a few minutes</strong> after a successful charge. The refund is issued to the same card used for the test payment. Payment processing fees are not charged to the User when updating the payment method.</p>
+      <p>7.5. Details of the previously linked card are automatically removed from the Provider's and YooKassa's systems after a successful payment method update. Subsequent charges are made from the new card.</p>
+
+      <h2 id="en-provision">8. Provision of Services</h2>
+      <p>8.1. Access to paid Service functionality is activated automatically upon the Provider's receipt of payment confirmation from YooKassa, typically within a few minutes.</p>
+      <p>8.2. In the event of technical failures delaying activation by more than 24 hours after payment confirmation, the User may contact support at <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a> or via <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">GitHub Issues</a>.</p>
+      <p>8.3. Services are provided remotely, without a bilateral paper document being signed.</p>
+
+      <h2 id="en-rights">9. Rights and Obligations of the Parties</h2>
+      <h3>9.1. The Provider undertakes to:</h3>
       <ul>
         <li>grant the User access to Service functionality in accordance with the paid Plan;</li>
-        <li>take reasonable measures to ensure uninterrupted Service operation, but does not guarantee absolute uptime (see Section 8);</li>
-        <li>notify of changes to the offer terms in accordance with Section 12.</li>
+        <li>take reasonable measures to ensure uninterrupted Service operation, but does not guarantee absolute uptime (see Section 10);</li>
+        <li>notify of changes to the offer terms in accordance with Section 14;</li>
+        <li>notify the User of upcoming Subscription auto-renewal and of the outcome of automatic charges in accordance with Section 6.</li>
       </ul>
-      <h3>7.2. The Provider is entitled to:</h3>
+      <h3>9.2. The Provider is entitled to:</h3>
       <ul>
         <li>change Service functionality within a Plan without prior notice;</li>
         <li>suspend or block the User's access to the Service in case of violation of this offer or the <a href="/legal/terms.html">Terms of Use</a>;</li>
         <li>engage third parties (subprocessors) to provide the Services, including the payment provider YooKassa and the cloud provider Supabase.</li>
       </ul>
-      <h3>7.3. The User undertakes to:</h3>
+      <h3>9.3. The User undertakes to:</h3>
       <ul>
         <li>provide accurate data upon registration;</li>
         <li>pay for the selected Plan in a timely manner;</li>
         <li>refrain from actions aimed at bypassing technical restrictions of the Service, including entitlement checks.</li>
       </ul>
 
-      <h2 id="en-liability">8. Liability</h2>
-      <p>8.1. The Provider is not liable for interruptions in the provision of Services caused by circumstances beyond its reasonable control, including failures on the part of third parties (YooKassa, Supabase, internet service providers).</p>
-      <p>8.2. <strong>The Provider's total liability to the User for any claims related to this offer is limited to the amount of the User's most recent payment.</strong></p>
-      <p>8.3. The Provider is not liable for data loss caused by the User's actions (including deletion of the local database without prior synchronization).</p>
+      <h2 id="en-liability">10. Liability</h2>
+      <p>10.1. The Provider is not liable for interruptions in the provision of Services caused by circumstances beyond its reasonable control, including failures on the part of third parties (YooKassa, Supabase, internet service providers).</p>
+      <p>10.2. <strong>The Provider's total liability to the User for any claims related to this offer is limited to the amount of the User's most recent payment.</strong></p>
+      <p>10.3. The Provider is not liable for data loss caused by the User's actions (including deletion of the local database without prior synchronization).</p>
 
-      <h2 id="en-pd">9. Personal Data</h2>
+      <h2 id="en-pd">11. Personal Data</h2>
       <p>Processing of the User's personal data is carried out in accordance with the <a href="/legal/privacy.html">Privacy Policy</a>, which is an integral part of this offer.</p>
 
-      <h2 id="en-refund">10. Refunds</h2>
+      <h2 id="en-refund">12. Refunds</h2>
       <p>Refunds are processed in accordance with the <a href="/legal/return.html">Refund Policy</a>, which is an integral part of this offer.</p>
 
-      <h2 id="en-force">11. Force Majeure</h2>
+      <h2 id="en-force">13. Force Majeure</h2>
       <p>The parties are released from liability for full or partial non-performance of obligations under this offer if such non-performance resulted from force majeure circumstances, including but not limited to: natural disasters, military actions, acts of government authorities, internet infrastructure failures, and outages on the part of third parties (payment systems, hosting providers, cloud services) that arose after the conclusion of the agreement and which the parties could not have foreseen or prevented by reasonable measures.</p>
 
-      <h2 id="en-changes">12. Changes to the Offer</h2>
-      <p>12.1. The Provider may unilaterally amend this offer.</p>
-      <p>12.2. A new version of the offer is published at <a href="https://yourtaskflow.app/legal/offer.html">yourtaskflow.app/legal/offer.html</a>, indicating the version number and effective date.</p>
-      <p>12.3. <strong>Payments made before a new version of the offer takes effect are governed by the version of the offer in force at the time such payment was made.</strong> Changes are not retroactive with respect to already-paid periods.</p>
-      <p>12.4. Continued use of the Service after publication of a new version of the offer constitutes the User's agreement to the amended terms with respect to subsequent payments.</p>
+      <h2 id="en-changes">14. Changes to the Offer</h2>
+      <p>14.1. The Provider may unilaterally amend this offer.</p>
+      <p>14.2. A new version of the offer is published at <a href="https://yourtaskflow.app/legal/offer.html">yourtaskflow.app/legal/offer.html</a>, indicating the version number and effective date.</p>
+      <p>14.3. <strong>Payments made before a new version of the offer takes effect are governed by the version of the offer in force at the time such payment was made.</strong> Changes are not retroactive with respect to already-paid periods.</p>
+      <p>14.4. Continued use of the Service after publication of a new version of the offer constitutes the User's agreement to the amended terms with respect to subsequent payments.</p>
 
-      <h2 id="en-disputes">13. Dispute Resolution</h2>
-      <p>13.1. All disputes and disagreements arising from this offer shall be resolved through negotiation.</p>
-      <p>13.2. <strong>A pre-litigation claims procedure is mandatory.</strong> A claim must be submitted in writing to <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. The claim review period is 30 (thirty) calendar days from receipt.</p>
-      <p>13.3. If a dispute cannot be resolved through the claims procedure within the specified period, it shall be referred to a court at the place of registration of the Provider in accordance with the applicable legislation of the Russian Federation.</p>
+      <h2 id="en-disputes">15. Dispute Resolution</h2>
+      <p>15.1. All disputes and disagreements arising from this offer shall be resolved through negotiation.</p>
+      <p>15.2. <strong>A pre-litigation claims procedure is mandatory.</strong> A claim must be submitted in writing to <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>. The claim review period is 30 (thirty) calendar days from receipt.</p>
+      <p>15.3. If a dispute cannot be resolved through the claims procedure within the specified period, it shall be referred to a court at the place of registration of the Provider in accordance with the applicable legislation of the Russian Federation.</p>
 
-      <h2 id="en-requisites">14. Provider Details</h2>
+      <h2 id="en-requisites">16. Provider Details</h2>
       <div class="callout">
         <p><strong>Full name:</strong> Daniil Lebedev (public name: danny-swan)</p>
         <p><strong>Status:</strong> Professional Income Tax payer (self-employed), pursuant to Federal Law No. 422-FZ dated November 27, 2018</p>
@@ -316,7 +351,7 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div>© 2026 TaskFlow · Версия документа 1.0</div>
+    <div>© 2026 TaskFlow · Версия документа 1.1</div>
     <div class="footer-links">
       <a href="https://yourtaskflow.app">yourtaskflow.app</a>
       <a href="/legal/offer.html">Оферта</a>

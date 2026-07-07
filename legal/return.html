@@ -36,7 +36,7 @@
     <!-- RUSSIAN -->
     <section id="ru">
       <h1>Политика возврата средств</h1>
-      <p class="effective-date">Версия 1.0 · Дата вступления в силу: 06.07.2026</p>
+      <p class="effective-date">Версия 1.1 · Дата вступления в силу: 07.07.2026</p>
 
       <div class="toc">
         <p>Содержание</p>
@@ -46,6 +46,7 @@
           <li><a href="#ru-process">Порядок обращения</a></li>
           <li><a href="#ru-timing">Сроки рассмотрения и зачисления</a></li>
           <li><a href="#ru-fee">Комиссия платёжной системы</a></li>
+          <li><a href="#ru-update-card">Автоматический возврат при обновлении способа оплаты</a></li>
           <li><a href="#ru-receipt">Пересечение с чеком НПД</a></li>
           <li><a href="#ru-noreturn">Что не возвращается</a></li>
         </ol>
@@ -96,16 +97,26 @@
       </ul>
 
       <h2 id="ru-fee">5. Комиссия платёжной системы</h2>
-      <p>Комиссия платёжной системы ЮKassa (стандартно — <strong>2,8%</strong> от суммы платежа) удерживается Исполнителем и <strong>не подлежит возврату</strong> Пользователю, поскольку является расходом, фактически понесённым в связи с обработкой транзакции, независимо от последующего возврата основной суммы.</p>
+      <p>Комиссия платёжной системы ЮKassa (стандартно — <strong>2,8%</strong> от суммы платежа) удерживается Исполнителем и <strong>не подлежит возврату</strong> Пользователю, поскольку является расходом, фактически понесённым в связи с обработкой транзакции, независимо от последующего возврата основной суммы. Исключение — автоматический возврат пробного платежа при обновлении способа оплаты, порядок которого установлен в разделе 6 настоящей Политики.</p>
 
-      <h2 id="ru-receipt">6. Пересечение с чеком НПД</h2>
+      <h2 id="ru-update-card">6. Автоматический возврат при обновлении способа оплаты</h2>
+      <p>Для обновления привязанной банковской карты (в связи с истечением срока её действия, блокировкой, заменой или по иной причине) в Приложении реализован механизм пробного платежа в размере <strong>1 (одного) российского рубля</strong>, который:</p>
+      <ul>
+        <li>списывается с новой карты Пользователя исключительно для верификации возможности проведения будущих автосписаний по Подписке и получения от ЮKassa нового идентификатора способа оплаты (<code>payment_method_id</code>);</li>
+        <li>возвращается на ту же карту в <strong>автоматическом режиме</strong> сразу после подтверждения успешного списания — <strong>без обращения в службу поддержки</strong> и без подачи заявления Пользователем;</li>
+        <li>возвращается в <strong>полной сумме (1 ₽)</strong>, без удержания комиссии платёжной системы, в порядке исключения из общего правила раздела 5 (комиссия за пробный платёж и автоматический возврат в этом сценарии не взимается либо покрывается Исполнителем).</li>
+      </ul>
+      <p>Срок фактического зачисления возврата на карту Пользователя составляет обычно <strong>от нескольких минут до 1 (одного) банковского дня</strong>, в отдельных случаях — до 3 (трёх) банковских дней, в зависимости от банка-эмитента карты. В случае, если возврат не поступил в течение 3 (трёх) банковских дней, Пользователь вправе обратиться в поддержку по адресу <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>.</p>
+      <p>Автоматический возврат пробного платежа не является возвратом стоимости Подписки в смысле разделов 1–5 настоящей Политики и не влияет на статус и срок действия текущей Подписки Пользователя.</p>
+
+      <h2 id="ru-receipt">7. Пересечение с чеком НПД</h2>
       <p>При оформлении возврата (полного или частичного) ранее выданный чек, сформированный в приложении «Мой налог» в рамках налога на профессиональный доход, <strong>аннулируется</strong>, и взамен формируется <strong>корректировочный чек</strong>, отражающий фактическую сумму, оставшуюся у Исполнителя после возврата. Копия корректировочного чека направляется Пользователю на email, указанный при оплате.</p>
 
-      <h2 id="ru-noreturn">7. Что не возвращается</h2>
+      <h2 id="ru-noreturn">8. Что не возвращается</h2>
       <ul>
         <li>Тариф <strong>Lifetime</strong>, если с момента оплаты прошло более 14 дней и Пользователь активно пользовался облачной функциональностью;</li>
         <li>Платежи, в отношении которых выявлены признаки злоупотребления (многократное оформление и возврат Подписки с целью бесплатного использования платной функциональности, использование заведомо недостоверных данных при оформлении возврата);</li>
-        <li>Комиссия платёжной системы (см. раздел 5);</li>
+        <li>Комиссия платёжной системы (см. раздел 5), за исключением автоматического возврата пробного платежа при обновлении способа оплаты (см. раздел 6);</li>
         <li>Периоды Подписки, уже использованные Пользователем на момент обращения (за исключением случаев, предусмотренных разделом 2 для тарифа Annual, где решение о пропорциональном возврате принимается по усмотрению Исполнителя).</li>
       </ul>
       <p>Исполнитель оставляет за собой право отказать в возврате при наличии обоснованных подозрений в злоупотреблении настоящей Политикой, с указанием причины отказа в ответе на обращение Пользователя.</p>
@@ -116,7 +127,7 @@
     <!-- ENGLISH -->
     <section id="en">
       <h1>Refund Policy</h1>
-      <p class="effective-date">Version 1.0 · Effective date: July 6, 2026</p>
+      <p class="effective-date">Version 1.1 · Effective date: July 7, 2026</p>
 
       <div class="toc">
         <p>Contents</p>
@@ -126,6 +137,7 @@
           <li><a href="#en-process">How to request a refund</a></li>
           <li><a href="#en-timing">Review and payout timelines</a></li>
           <li><a href="#en-fee">Payment processing fee</a></li>
+          <li><a href="#en-update-card">Automatic refund when updating payment method</a></li>
           <li><a href="#en-receipt">Interaction with the NPD receipt</a></li>
           <li><a href="#en-noreturn">What is not refundable</a></li>
         </ol>
@@ -176,16 +188,26 @@
       </ul>
 
       <h2 id="en-fee">5. Payment processing fee</h2>
-      <p>The YooKassa payment processing fee (standard rate — <strong>2.8%</strong> of the payment amount) is retained by the Provider and is <strong>non-refundable</strong> to the User, as it is a cost actually incurred in connection with processing the transaction, regardless of any subsequent refund of the principal amount.</p>
+      <p>The YooKassa payment processing fee (standard rate — <strong>2.8%</strong> of the payment amount) is retained by the Provider and is <strong>non-refundable</strong> to the User, as it is a cost actually incurred in connection with processing the transaction, regardless of any subsequent refund of the principal amount. An exception applies to the automatic refund of the trial charge when updating a payment method, as set out in Section 6 of this Policy.</p>
 
-      <h2 id="en-receipt">6. Interaction with the NPD receipt</h2>
+      <h2 id="en-update-card">6. Automatic refund when updating payment method</h2>
+      <p>To update the linked bank card (due to expiration, blocking, replacement, or any other reason), the Application implements a trial charge mechanism in the amount of <strong>RUB 1 (one Russian ruble)</strong>, which:</p>
+      <ul>
+        <li>is charged to the User's new card solely to verify the ability to process future automatic Subscription charges and to obtain a new payment method identifier (<code>payment_method_id</code>) from YooKassa;</li>
+        <li>is refunded to the same card <strong>automatically</strong> immediately after the charge is confirmed — <strong>without contacting support</strong> and without any request from the User;</li>
+        <li>is refunded in the <strong>full amount (RUB 1)</strong>, without withholding the payment processing fee, as an exception to the general rule in Section 5 (the fee for the trial charge and the automatic refund in this scenario is either waived or covered by the Provider).</li>
+      </ul>
+      <p>The actual crediting of the refund to the User's card usually takes <strong>from a few minutes to 1 (one) banking day</strong>, and in some cases up to 3 (three) banking days, depending on the User's card-issuing bank. If the refund has not been credited within 3 (three) banking days, the User may contact support at <a href="mailto:support@yourtaskflow.app">support@yourtaskflow.app</a>.</p>
+      <p>The automatic refund of the trial charge is not a refund of the Subscription price within the meaning of Sections 1–5 of this Policy and does not affect the status or term of the User's current Subscription.</p>
+
+      <h2 id="en-receipt">7. Interaction with the NPD receipt</h2>
       <p>Upon processing a refund (full or partial), the previously issued receipt generated via the "Moy Nalog" application under the Professional Income Tax regime is <strong>cancelled</strong>, and a <strong>corrective receipt</strong> is issued instead, reflecting the actual amount retained by the Provider after the refund. A copy of the corrective receipt is sent to the User's email address on file.</p>
 
-      <h2 id="en-noreturn">7. What is not refundable</h2>
+      <h2 id="en-noreturn">8. What is not refundable</h2>
       <ul>
         <li>The <strong>Lifetime</strong> plan, if more than 14 days have passed since payment and the User has actively used the cloud functionality;</li>
         <li>Payments showing signs of abuse (repeated purchase-and-refund cycles intended to obtain free access to paid functionality, use of knowingly false information in a refund request);</li>
-        <li>The payment processing fee (see Section 5);</li>
+        <li>The payment processing fee (see Section 5), except for the automatic refund of the trial charge when updating the payment method (see Section 6);</li>
         <li>Subscription periods already used by the User at the time of the request (except as provided in Section 2 for the Annual plan, where a pro-rated refund is granted at the Provider's discretion).</li>
       </ul>
       <p>The Provider reserves the right to decline a refund where there is reasonable suspicion of abuse of this Policy, stating the reason for refusal in the response to the User's request.</p>
@@ -196,7 +218,7 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div>© 2026 TaskFlow · Версия документа 1.0</div>
+    <div>© 2026 TaskFlow · Версия документа 1.1</div>
     <div class="footer-links">
       <a href="https://yourtaskflow.app">yourtaskflow.app</a>
       <a href="/legal/offer.html">Оферта</a>
