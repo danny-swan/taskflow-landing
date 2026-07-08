@@ -146,6 +146,33 @@ $('login-form').addEventListener('submit', async (e) => {
   }
 });
 
+// Вход через Google (OAuth). Для пользователей, которые регистрировались в приложении через Google
+// и у которых нет пароля. Turnstile здесь не нужен — капча требуется только для password-входа.
+const googleBtn = $('google-login');
+if (googleBtn) {
+  googleBtn.addEventListener('click', async () => {
+    hideMsg($('auth-msg'));
+    googleBtn.disabled = true;
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: 'https://yourtaskflow.app/account/',
+          queryParams: { prompt: 'select_account' },
+        },
+      });
+      // При успехе браузер уйдёт на Google; ошибка — только если редирект не удался.
+      if (error) {
+        showMsg($('auth-msg'), `Не удалось начать вход через Google: ${error.message}`, 'error');
+        googleBtn.disabled = false;
+      }
+    } catch (err) {
+      showMsg($('auth-msg'), `Ошибка входа через Google: ${err.message || err}`, 'error');
+      googleBtn.disabled = false;
+    }
+  });
+}
+
 $('forgot-link').addEventListener('click', async (e) => {
   e.preventDefault();
   const email = $('email').value.trim();
@@ -474,5 +501,8 @@ function mkBtn(label, cls, onClick) {
   }
   supabase.auth.onAuthStateChange((event) => {
     if (event === 'SIGNED_OUT') showAuth();
+    // После возврата с Google OAuth Supabase сам подхватывает сессию из URL (detectSessionInUrl)
+    // и выдаёт SIGNED_IN — показываем кабинет.
+    if (event === 'SIGNED_IN' && accountScreen.hidden) renderAccount();
   });
 })();

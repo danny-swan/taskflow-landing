@@ -103,6 +103,17 @@ h1, h2, h3 {
 }
 .nav-cta:hover { background: var(--primary-hover); color: var(--on-primary) !important; }
 
+/* --- Nav: Account (outlined button) --- */
+.nav-account {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 10px;
+  border: 1.5px solid var(--primary);
+  color: var(--primary) !important; font-weight: 600; font-size: 14px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-account:hover { background: var(--primary); color: var(--on-primary) !important; }
+.nav-account svg { flex-shrink: 0; }
+
 /* --- Nav: Download dropdown --- */
 .nav-download { position: relative; }
 .nav-download-btn {
@@ -163,12 +174,28 @@ h1, h2, h3 {
 }
 .nav-lang a:not(.active):hover { color: var(--text) !important; }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .nav-links a.nav-link-item { display: none; }
 }
 @media (max-width: 480px) {
-  .nav-links { gap: 12px; }
+  .nav-links { gap: 8px; }
   .nav-download-btn { padding: 8px 12px; font-size: 13px; }
+  .nav-account { padding: 8px 10px; font-size: 13px; gap: 0; }
+  .nav-account-label { display: none; }
+}
+@media (max-width: 380px) {
+  .nav-links { gap: 6px; }
+  .nav-download-btn { padding: 7px 9px; }
+  .nav-download-caret { display: none; }
+  .nav-account { padding: 7px 9px; }
+  .nav-lang a { padding: 6px 10px; }
+}
+@media (max-width: 340px) {
+  .brand { font-size: 16px; }
+  .nav-links { gap: 5px; }
+  .nav-download-btn { padding: 6px 8px; font-size: 12px; }
+  .nav-account { padding: 6px 8px; }
+  .nav-lang a { padding: 6px 8px; font-size: 12px; }
 }
 
 /* --- Hero --- */
@@ -837,6 +864,10 @@ h1, h2, h3 {
       <a href="#how" class="nav-link-item">Get started</a>
       <a href="#pricing" class="nav-link-item">Pricing</a>
       <a href="#support" class="nav-link-item">Support</a>
+      <a href="/account/" class="nav-account" aria-label="Account">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="nav-account-label">Account</span>
+      </a>
 
       <div class="nav-download" id="nav-download">
         <button type="button" class="nav-download-btn" id="nav-download-btn" aria-haspopup="menu" aria-expanded="false">
@@ -1207,6 +1238,7 @@ h1, h2, h3 {
       <a href="/legal/privacy.html">Privacy</a>
       <a href="/legal/return.html">Refunds</a>
       <a href="/legal/terms.html">Terms of use</a>
+      <a href="/account/">Account</a>
       <a href="https://github.com/danny-swan/taskflow-app" target="_blank" rel="noopener">GitHub</a>
       <a href="https://github.com/danny-swan/taskflow-app/releases" target="_blank" rel="noopener">Releases</a>
       <a href="https://github.com/danny-swan/taskflow-app/issues" target="_blank" rel="noopener">Issues</a>
