@@ -140,7 +140,11 @@ h1 {
 </div>
 
 <script>
-// Показываем название тарифа из query-параметра ?tier=monthly|annual|lifetime.
+// Страница-мост между ЮKassa (redirect) и приложением TaskFlow.
+// Поддерживаем три контекста:
+//   ?tier=monthly|annual|lifetime  — обычная покупка тарифа
+//   ?ctx=card                      — привязка/смена карты (mode=update-card)
+//   ?ctx=trial                     — старт триала с привязкой карты (mode=trial)
 const tierNames = {
   monthly: 'Ежемесячно (299 ₽/мес)',
   annual: 'Ежегодно (2 990 ₽/год)',
@@ -148,20 +152,40 @@ const tierNames = {
 };
 const params = new URLSearchParams(location.search);
 const tier = params.get('tier');
+const ctx = params.get('ctx');
+
+const titleEl = document.querySelector('h1');
+const subtitleEl = document.querySelector('.subtitle');
 const nameEl = document.getElementById('tier-name');
 const infoEl = document.getElementById('tier-info');
 const returnBtn = document.getElementById('return-btn');
-if (tier && tierNames[tier]) {
+
+// deep-link по умолчанию — успешная оплата.
+let deepLink = 'taskflow://pay/success';
+
+if (ctx === 'card') {
+  titleEl.textContent = 'Карта успешно привязана';
+  subtitleEl.textContent = 'Способ оплаты сохранён. Следующее списание пройдёт автоматически.';
+  infoEl.style.display = 'none';
+  deepLink = 'taskflow://pay/success?ctx=card';
+} else if (ctx === 'trial') {
+  titleEl.textContent = 'Пробный период активирован';
+  subtitleEl.textContent = 'Карта привязана, 1 ₽ вернётся автоматически. Приятной работы в TaskFlow Pro.';
+  infoEl.style.display = 'none';
+  deepLink = 'taskflow://pay/success?ctx=trial';
+} else if (tier && tierNames[tier]) {
   nameEl.textContent = tierNames[tier];
-  returnBtn.href = 'taskflow://pay/success?tier=' + encodeURIComponent(tier);
+  deepLink = 'taskflow://pay/success?tier=' + encodeURIComponent(tier);
 } else {
   infoEl.style.display = 'none';
 }
 
+returnBtn.href = deepLink;
+
 // Автоматически попробуем открыть приложение через deep-link через 1.5 секунды.
 // Если TaskFlow установлен — Windows/macOS сами перехватят taskflow:// и откроют.
 setTimeout(() => {
-  window.location.href = returnBtn.href;
+  window.location.href = deepLink;
 }, 1500);
 </script>
 </body>
